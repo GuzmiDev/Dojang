@@ -13,6 +13,7 @@ namespace Dojang
     public partial class GetStudentByID : Form
     {
         static public string studentCode { get; set; }
+        private Form fh;
         public GetStudentByID()
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace Dojang
         {
             if (containerPanel.Controls.Count > 1)
                 containerPanel.Controls.RemoveAt(1);
-            Form fh = childForm as Form;
+            fh = childForm as Form;
             fh.TopLevel = false;
             fh.Location = new Point(87, 83);
             containerPanel.Controls.Add(fh);
@@ -51,7 +52,7 @@ namespace Dojang
         private void containerPanel_ControlRemoved(object sender, ControlEventArgs e)
         {
 
-
+            fh.Dispose();
         }
     }
 }
