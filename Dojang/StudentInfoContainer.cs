@@ -53,24 +53,25 @@ namespace Dojang
                 StudentName.Text = student.Name;
                 pictureBox1.Image = ConvertByteArrayToImage(student.Belt.Image);
 
-                var daysLefts = (student.CancelationDate - date).Days.ToString();
+                var daysLefts = (student.CancelationDate - date).Days;
+                var daysLeftsString = daysLefts.ToString();
 
-                if (daysLefts == "0")
+                if (daysLeftsString == "0")
                 {
                     daysLeftsLabel.Text = "REQUIERE RENOVAR";
                     iconCorrect.Visible = false;
                     iconError.Visible = true;
                     btnRenew.Visible = true;
                 }
-                else if (daysLefts == "1")
+                else if (daysLeftsString == "1")
                 {
                     registerLog();
-                    daysLeftsLabel.Text = daysLefts + " DIA";
+                    daysLeftsLabel.Text = daysLeftsString + " DIA";
                 }
                 else
                 {
                     registerLog();
-                    daysLeftsLabel.Text = daysLefts + " DIAS";
+                    daysLeftsLabel.Text = daysLeftsString + " DIAS";
 
                 }
 

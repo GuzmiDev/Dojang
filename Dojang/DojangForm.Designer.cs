@@ -87,12 +87,11 @@
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(48, 12);
+            this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(224, 33);
+            this.label3.Size = new System.Drawing.Size(305, 60);
             this.label3.TabIndex = 0;
             this.label3.Text = "CONFIGURACION";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -122,15 +121,16 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(78, 15);
+            this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(139, 33);
+            this.label2.Size = new System.Drawing.Size(305, 60);
             this.label2.TabIndex = 0;
             this.label2.Text = "ALUMNOS";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnRegisterStudent
             // 
@@ -159,15 +159,15 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(24, 12);
+            this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(270, 33);
+            this.label1.Size = new System.Drawing.Size(305, 60);
             this.label1.TabIndex = 0;
             this.label1.Text = "REGISTRAR ALUMNO";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.btnRegisterStudent_Click);
             this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
             this.label1.MouseHover += new System.EventHandler(this.label1_MouseHover);
@@ -199,14 +199,14 @@
             // 
             // labelHome
             // 
-            this.labelHome.AutoSize = true;
             this.labelHome.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelHome.ForeColor = System.Drawing.Color.White;
-            this.labelHome.Location = new System.Drawing.Point(102, 12);
+            this.labelHome.Location = new System.Drawing.Point(0, 0);
             this.labelHome.Name = "labelHome";
-            this.labelHome.Size = new System.Drawing.Size(91, 33);
+            this.labelHome.Size = new System.Drawing.Size(305, 60);
             this.labelHome.TabIndex = 0;
             this.labelHome.Text = "INICIO";
+            this.labelHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelHome.Click += new System.EventHandler(this.btnHome_Click);
             this.labelHome.MouseLeave += new System.EventHandler(this.btnHome_MouseLeave);
             this.labelHome.MouseHover += new System.EventHandler(this.btnHome_MouseHover);
@@ -237,18 +237,15 @@
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.mainContainer);
             this.Controls.Add(this.panel1);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "DojangForm";
             this.Text = "Dojang";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DojangForm_FormClosed);
             this.panel1.ResumeLayout(false);
             this.btnConfiguration.ResumeLayout(false);
-            this.btnConfiguration.PerformLayout();
             this.btnDataGrid.ResumeLayout(false);
-            this.btnDataGrid.PerformLayout();
             this.btnRegisterStudent.ResumeLayout(false);
-            this.btnRegisterStudent.PerformLayout();
             this.btnHome.ResumeLayout(false);
-            this.btnHome.PerformLayout();
             this.ResumeLayout(false);
 
         }
