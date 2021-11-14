@@ -8,35 +8,35 @@ using System.Threading.Tasks;
 
 namespace Business
 {
-    public class B_Belts
+    public class B_LogStudents
     {
-        static public void Save(BeltEntity entity)
+        static public void Save(LogStudentsEntity entity)
         {
             using (var db = new DojangContext())
             {
-                db.Belts.Add(entity);
+                db.logStudents.Add(entity);
                 db.SaveChanges();
             }
         }
-        static public List<BeltEntity> GetAll()
+        static public List<LogStudentsEntity> GetAll()
         {
             using (var db = new DojangContext())
             {
-                return db.Belts.ToList();
+                return db.logStudents.ToList();
             }
         }
-        static public BeltEntity GetById(int id)
+        static public LogStudentsEntity GetById(int id)
         {
             using (var db = new DojangContext())
             {
-                return db.Belts.ToList().FirstOrDefault(belt => belt.BeltID == id);
+                return db.logStudents.ToList().FirstOrDefault(logStudents => logStudents.Id == id);
             }
         }
-        static public void Update(BeltEntity entity)
+        static public void Update(LogStudentsEntity entity)
         {
             using (var db = new DojangContext())
             {
-                db.Belts.Update(entity);
+                db.logStudents.Update(entity);
                 db.SaveChanges();
             }
         }
@@ -44,13 +44,14 @@ namespace Business
         {
             using (var db = new DojangContext())
             {
-                var BeltToDelete = db.Belts.ToList().FirstOrDefault(belt => belt.BeltID == id);
-                if (BeltToDelete != null)
+                var LogToDelete = db.logStudents.ToList().FirstOrDefault(logStudents => logStudents.Id == id);
+                if (LogToDelete != null)
                 {
-                    BeltToDelete.Status = false;
-                    db.Belts.Update(BeltToDelete);
+                    LogToDelete.Status = false;
+                    db.logStudents.Update(LogToDelete);
                 }
             }
         }
+
     }
 }

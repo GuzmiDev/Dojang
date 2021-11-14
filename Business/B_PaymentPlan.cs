@@ -8,35 +8,35 @@ using System.Threading.Tasks;
 
 namespace Business
 {
-    public class B_Belts
+    public class B_PaymentPlan
     {
-        static public void Save(BeltEntity entity)
+        static public void Save(PaymentPlanEntity entity)
         {
             using (var db = new DojangContext())
             {
-                db.Belts.Add(entity);
+                db.PaymentPlan.Add(entity);
                 db.SaveChanges();
             }
         }
-        static public List<BeltEntity> GetAll()
+        static public List<PaymentPlanEntity> GetAll()
         {
             using (var db = new DojangContext())
             {
-                return db.Belts.ToList();
+                return db.PaymentPlan.ToList();
             }
         }
-        static public BeltEntity GetById(int id)
+        static public PaymentPlanEntity GetById(int id)
         {
             using (var db = new DojangContext())
             {
-                return db.Belts.ToList().FirstOrDefault(belt => belt.BeltID == id);
+                return db.PaymentPlan.ToList().FirstOrDefault(suscription => suscription.PaymentPlanID== id);
             }
         }
-        static public void Update(BeltEntity entity)
+        static public void Update(PaymentPlanEntity entity)
         {
             using (var db = new DojangContext())
             {
-                db.Belts.Update(entity);
+                db.PaymentPlan.Update(entity);
                 db.SaveChanges();
             }
         }
@@ -44,11 +44,11 @@ namespace Business
         {
             using (var db = new DojangContext())
             {
-                var BeltToDelete = db.Belts.ToList().FirstOrDefault(belt => belt.BeltID == id);
-                if (BeltToDelete != null)
+                var PlanToDelete = db.PaymentPlan.ToList().FirstOrDefault(suscription => suscription.PaymentPlanID == id);
+                if (PlanToDelete != null)
                 {
-                    BeltToDelete.Status = false;
-                    db.Belts.Update(BeltToDelete);
+                    PlanToDelete.Status = false;
+                    db.PaymentPlan.Update(PlanToDelete);
                 }
             }
         }

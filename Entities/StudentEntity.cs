@@ -11,12 +11,11 @@ namespace Entities
     public  class StudentEntity
     {
         [Key]
-        [StringLength(100)]
         public string StudentID { get; set; }
         public string Name { get; set; }
         public string? LastName { get; set; }
         public string? Phone { get; set; }
-        public DateTime CancellationDate { get; set; }
+        public DateTime CancelationDate { get; set; }
         public bool Status { get; set; }
         [DisplayName("Image")]
         public byte[]? ImagePerfil { get; set; }
@@ -30,6 +29,11 @@ namespace Entities
         //Relation with Schedule
         public int ScheduleID { get; set; }
         public ScheduleEntity Schedule { get; set; }
+
+        //Relation with PaymentPlanEntity
+
+        public int PaymentPlanID { get; set; }
+        public PaymentPlanEntity PaymentPlan { get; set; }
 
 
     }

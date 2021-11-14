@@ -4,6 +4,7 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DojangContext))]
-    partial class DojangContextModelSnapshot : ModelSnapshot
+    [Migration("20211113042351_firstMigration")]
+    partial class firstMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,33 +51,6 @@ namespace DataAccess.Migrations
                     b.ToTable("Belts");
                 });
 
-            modelBuilder.Entity("Entities.LogStudentsEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Status")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
-                    b.Property<string>("StudentID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudentID");
-
-                    b.ToTable("logStudents");
-                });
-
             modelBuilder.Entity("Entities.PaymentHistoryEntity", b =>
                 {
                     b.Property<int>("PaymentID")
@@ -86,13 +61,6 @@ namespace DataAccess.Migrations
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("PaymentPlanInTheMoment")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("PriceInTheMoment")
-                        .HasColumnType("money");
 
                     b.Property<bool>("Status")
                         .ValueGeneratedOnAdd()
@@ -121,15 +89,15 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentPlanID"), 1L, 1);
 
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("money");
+
                     b.Property<int>("Days")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("money");
 
                     b.Property<bool>("Status")
                         .ValueGeneratedOnAdd()
@@ -210,17 +178,6 @@ namespace DataAccess.Migrations
                     b.HasIndex("ScheduleID");
 
                     b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("Entities.LogStudentsEntity", b =>
-                {
-                    b.HasOne("Entities.StudentEntity", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("Entities.PaymentHistoryEntity", b =>

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccess.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class firstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,12 +16,28 @@ namespace DataAccess.Migrations
                     BeltID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BeltName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Belts", x => x.BeltID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PaymentPlan",
+                columns: table => new
+                {
+                    PaymentPlanID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Amount = table.Column<decimal>(type: "money", nullable: false),
+                    Days = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaymentPlan", x => x.PaymentPlanID);
                 });
 
             migrationBuilder.CreateTable(
@@ -42,16 +58,17 @@ namespace DataAccess.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    StudentID = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    StudentID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CancellationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CancelationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     ImagePerfil = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     ImageBarCode = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     BeltID = table.Column<int>(type: "int", nullable: false),
-                    ScheduleID = table.Column<int>(type: "int", nullable: false)
+                    ScheduleID = table.Column<int>(type: "int", nullable: false),
+                    PaymentPlanID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,6 +80,12 @@ namespace DataAccess.Migrations
                         principalColumn: "BeltID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Students_PaymentPlan_PaymentPlanID",
+                        column: x => x.PaymentPlanID,
+                        principalTable: "PaymentPlan",
+                        principalColumn: "PaymentPlanID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Students_Schedules_ScheduleID",
                         column: x => x.ScheduleID,
                         principalTable: "Schedules",
@@ -71,21 +94,21 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Suscriptions",
+                name: "PaymentHistory",
                 columns: table => new
                 {
-                    SuscriptionID = table.Column<int>(type: "int", nullable: false)
+                    PaymentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Price = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    StudentID = table.Column<string>(type: "nvarchar(100)", nullable: false)
+                    TypeOfTransaction = table.Column<int>(type: "int", nullable: false),
+                    StudentID = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Suscriptions", x => x.SuscriptionID);
+                    table.PrimaryKey("PK_PaymentHistory", x => x.PaymentID);
                     table.ForeignKey(
-                        name: "FK_Suscriptions_Students_StudentID",
+                        name: "FK_PaymentHistory_Students_StudentID",
                         column: x => x.StudentID,
                         principalTable: "Students",
                         principalColumn: "StudentID",
@@ -93,31 +116,39 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_PaymentHistory_StudentID",
+                table: "PaymentHistory",
+                column: "StudentID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Students_BeltID",
                 table: "Students",
                 column: "BeltID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Students_PaymentPlanID",
+                table: "Students",
+                column: "PaymentPlanID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Students_ScheduleID",
                 table: "Students",
                 column: "ScheduleID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Suscriptions_StudentID",
-                table: "Suscriptions",
-                column: "StudentID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Suscriptions");
+                name: "PaymentHistory");
 
             migrationBuilder.DropTable(
                 name: "Students");
 
             migrationBuilder.DropTable(
                 name: "Belts");
+
+            migrationBuilder.DropTable(
+                name: "PaymentPlan");
 
             migrationBuilder.DropTable(
                 name: "Schedules");

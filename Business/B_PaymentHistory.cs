@@ -8,35 +8,35 @@ using System.Threading.Tasks;
 
 namespace Business
 {
-    public class B_Belts
+    public class B_PaymentHistory
     {
-        static public void Save(BeltEntity entity)
+        static public void Save(PaymentHistoryEntity entity)
         {
             using (var db = new DojangContext())
             {
-                db.Belts.Add(entity);
+                db.PaymentHistory.Add(entity);
                 db.SaveChanges();
             }
         }
-        static public List<BeltEntity> GetAll()
+        static public List<PaymentHistoryEntity> GetAll()
         {
             using (var db = new DojangContext())
             {
-                return db.Belts.ToList();
+                return db.PaymentHistory.ToList();
             }
         }
-        static public BeltEntity GetById(int id)
+        static public PaymentHistoryEntity GetById(int id)
         {
             using (var db = new DojangContext())
             {
-                return db.Belts.ToList().FirstOrDefault(belt => belt.BeltID == id);
+                return db.PaymentHistory.ToList().FirstOrDefault(suscription => suscription.PaymentID == id);
             }
         }
-        static public void Update(BeltEntity entity)
+        static public void Update(PaymentHistoryEntity entity)
         {
             using (var db = new DojangContext())
             {
-                db.Belts.Update(entity);
+                db.PaymentHistory.Update(entity);
                 db.SaveChanges();
             }
         }
@@ -44,11 +44,11 @@ namespace Business
         {
             using (var db = new DojangContext())
             {
-                var BeltToDelete = db.Belts.ToList().FirstOrDefault(belt => belt.BeltID == id);
-                if (BeltToDelete != null)
+                var PaymentToDelete = db.PaymentHistory.ToList().FirstOrDefault(suscription => suscription.PaymentID == id);
+                if (PaymentToDelete != null)
                 {
-                    BeltToDelete.Status = false;
-                    db.Belts.Update(BeltToDelete);
+                    PaymentToDelete.Status = false;
+                    db.PaymentHistory.Update(PaymentToDelete);
                 }
             }
         }

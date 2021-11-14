@@ -59,5 +59,55 @@ namespace Dojang.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _135394165_840613273425420_8755999256074221276_n {
+            get {
+                object obj = ResourceManager.GetObject("135394165_840613273425420_8755999256074221276_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _244577011_1375740089487821_3408461944493188135_n {
+            get {
+                object obj = ResourceManager.GetObject("244577011_1375740089487821_3408461944493188135_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _244577011_1375740089487821_3408461944493188135_n1 {
+            get {
+                object obj = ResourceManager.GetObject("244577011_1375740089487821_3408461944493188135_n1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_check_mark_5 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-check-mark-5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_error_8 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-error-8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

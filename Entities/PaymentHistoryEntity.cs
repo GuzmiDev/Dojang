@@ -9,17 +9,26 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class SuscriptionEntity
+    public class PaymentHistoryEntity
     {
         [Key]
-        public int SuscriptionID { get; set; }
+        public int PaymentID { get; set; }
         public DateTime Date { get; set; }
-        public int Price { get; set; }
-        [Required]
-        public bool Status { get; set; } 
+        public bool Status { get; set; }
+        public typeOfTransaction TypeOfTransaction { get; set; }
+        [Column(TypeName = "money")]
+        public decimal PriceInTheMoment { get; set; }
+        public string  PaymentPlanInTheMoment{ get; set; }
+
 
         //Relation with Student
         public string StudentID { get; set; }
         public StudentEntity Student { get; set; }
+    }
+
+    public enum typeOfTransaction
+    {
+        Suscription,
+        Renovation
     }
 }

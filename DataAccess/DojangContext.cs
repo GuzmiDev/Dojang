@@ -13,13 +13,15 @@ namespace DataAccess
         public DbSet<StudentEntity> Students { get; set; }
         public DbSet<BeltEntity> Belts { get; set; }
         public DbSet<ScheduleEntity> Schedules { get; set; }
-        public DbSet<SuscriptionEntity> Suscriptions { get; set; }
+        public DbSet<PaymentHistoryEntity> PaymentHistory { get; set; }
+        public DbSet<PaymentPlanEntity> PaymentPlan { get; set; }
+        public DbSet<LogStudentsEntity> logStudents { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             if (!options.IsConfigured)
             {
-                options.UseSqlServer("Server=GUZMI\\SQLEXPRESS; Database=Dojang; Trusted_Connection=True");
+                options.UseSqlServer("Server=localhost\\SQLEXPRESS; Database=Dojang; Trusted_Connection=True");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,9 +35,16 @@ namespace DataAccess
             modelBuilder.Entity<ScheduleEntity>()
                 .Property(b => b.Status)
                 .HasDefaultValue(true);
-            modelBuilder.Entity<SuscriptionEntity>()
+            modelBuilder.Entity<PaymentHistoryEntity>()
                 .Property(b => b.Status)
                 .HasDefaultValue(true);
+            modelBuilder.Entity<PaymentPlanEntity>()
+                .Property(b => b.Status)
+                .HasDefaultValue(true);
+            modelBuilder.Entity<LogStudentsEntity>()
+                .Property(b => b.Status)
+                .HasDefaultValue(true);
+
 
         }
 

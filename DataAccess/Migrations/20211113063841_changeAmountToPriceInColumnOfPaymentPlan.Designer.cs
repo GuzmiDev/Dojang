@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DojangContext))]
-    [Migration("20211111223058_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20211113063841_changeAmountToPriceInColumnOfPaymentPlan")]
+    partial class changeAmountToPriceInColumnOfPaymentPlan
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,9 +37,9 @@ namespace DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<byte[]>("Image")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<bool>("Status")
                         .ValueGeneratedOnAdd()
@@ -49,6 +49,71 @@ namespace DataAccess.Migrations
                     b.HasKey("BeltID");
 
                     b.ToTable("Belts");
+                });
+
+            modelBuilder.Entity("Entities.PaymentHistoryEntity", b =>
+                {
+                    b.Property<int>("PaymentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentID"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentPlanInTheMoment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("PriceInTheMoment")
+                        .HasColumnType("money");
+
+                    b.Property<bool>("Status")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("StudentID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("TypeOfTransaction")
+                        .HasColumnType("int");
+
+                    b.HasKey("PaymentID");
+
+                    b.HasIndex("StudentID");
+
+                    b.ToTable("PaymentHistory");
+                });
+
+            modelBuilder.Entity("Entities.PaymentPlanEntity", b =>
+                {
+                    b.Property<int>("PaymentPlanID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentPlanID"), 1L, 1);
+
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("money");
+
+                    b.Property<bool>("Status")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.HasKey("PaymentPlanID");
+
+                    b.ToTable("PaymentPlan");
                 });
 
             modelBuilder.Entity("Entities.ScheduleEntity", b =>
@@ -76,13 +141,12 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.StudentEntity", b =>
                 {
                     b.Property<string>("StudentID")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("BeltID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CancellationDate")
+                    b.Property<DateTime>("CancelationDate")
                         .HasColumnType("datetime2");
 
                     b.Property<byte[]>("ImageBarCode")
@@ -97,6 +161,9 @@ namespace DataAccess.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PaymentPlanID")
+                        .HasColumnType("int");
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
@@ -113,39 +180,22 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("BeltID");
 
+                    b.HasIndex("PaymentPlanID");
+
                     b.HasIndex("ScheduleID");
 
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("Entities.SuscriptionEntity", b =>
+            modelBuilder.Entity("Entities.PaymentHistoryEntity", b =>
                 {
-                    b.Property<int>("SuscriptionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasOne("Entities.StudentEntity", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SuscriptionID"), 1L, 1);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Status")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
-                    b.Property<string>("StudentID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("SuscriptionID");
-
-                    b.HasIndex("StudentID");
-
-                    b.ToTable("Suscriptions");
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("Entities.StudentEntity", b =>
@@ -153,6 +203,12 @@ namespace DataAccess.Migrations
                     b.HasOne("Entities.BeltEntity", "Belt")
                         .WithMany()
                         .HasForeignKey("BeltID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.PaymentPlanEntity", "PaymentPlan")
+                        .WithMany()
+                        .HasForeignKey("PaymentPlanID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -164,18 +220,9 @@ namespace DataAccess.Migrations
 
                     b.Navigation("Belt");
 
+                    b.Navigation("PaymentPlan");
+
                     b.Navigation("Schedule");
-                });
-
-            modelBuilder.Entity("Entities.SuscriptionEntity", b =>
-                {
-                    b.HasOne("Entities.StudentEntity", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Student");
                 });
 #pragma warning restore 612, 618
         }
