@@ -45,14 +45,7 @@ namespace Dojang
         
         private void showStudent()
         {
-            student = B_Students.GetById(GetStudentByID.studentCode);
-
-            if (student == null)
-            {
-                MessageBox.Show("No existe estudiante con este ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
+                student = GetStudentByID.Student;
                 var date = DateTime.Today;
                 dateLabel.Text = date.ToString("d DE MMMM DEL yyyy", new CultureInfo("es-MX")).ToUpper();
                 student.Belt = B_Belts.GetById(student.BeltID);
@@ -82,7 +75,6 @@ namespace Dojang
                 }
 
 
-            }
         }
     }
 }

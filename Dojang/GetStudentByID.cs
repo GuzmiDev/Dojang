@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business;
+using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +16,7 @@ namespace Dojang
     {
         static public string studentCode { get; set; }
         private Form fh;
+        static public StudentEntity Student { get; set; }  
         public GetStudentByID()
         {
             InitializeComponent();
@@ -29,7 +32,15 @@ namespace Dojang
             if (e.KeyChar == Convert.ToChar(Keys.Return))
             {
                 studentCode = inputCode.Text;
+                Student = B_Students.GetById(studentCode);
+                if (Student == null)
+                {
+                    MessageBox.Show("No existe estudiante con este ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
                 OpenChildForm(new StudentInfoContainer());
+                }
                 inputCode.Text = "";
                 
                 e.Handled = true;
