@@ -147,6 +147,7 @@
             this.button1.TabIndex = 87;
             this.button1.Text = "REGISTRAR";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSaveBarCode
             // 
@@ -163,6 +164,7 @@
             this.btnSaveBarCode.TabIndex = 86;
             this.btnSaveBarCode.Text = "GUARDAR CODIGO";
             this.btnSaveBarCode.UseVisualStyleBackColor = false;
+            this.btnSaveBarCode.Click += new System.EventHandler(this.btnSaveBarCode_Click);
             // 
             // panelContainerBarCode
             // 
@@ -208,6 +210,7 @@
             this.btnTakePicture.TabIndex = 84;
             this.btnTakePicture.Text = "TOMAR FOTO";
             this.btnTakePicture.UseVisualStyleBackColor = false;
+            this.btnTakePicture.Click += new System.EventHandler(this.btnTakePicture_Click);
             // 
             // btnRecord
             // 
@@ -224,6 +227,7 @@
             this.btnRecord.TabIndex = 83;
             this.btnRecord.Text = "GRABAR";
             this.btnRecord.UseVisualStyleBackColor = false;
+            this.btnRecord.Click += new System.EventHandler(this.btnRecord_Click);
             // 
             // pictureBox1
             // 
@@ -416,6 +420,7 @@
             this.inputLastName.Name = "inputLastName";
             this.inputLastName.Size = new System.Drawing.Size(241, 23);
             this.inputLastName.TabIndex = 68;
+            this.inputLastName.TextChanged += new System.EventHandler(this.inputLastName_TextChanged);
             // 
             // labelLastName
             // 
@@ -449,6 +454,7 @@
             this.inputName.Name = "inputName";
             this.inputName.Size = new System.Drawing.Size(241, 23);
             this.inputName.TabIndex = 65;
+            this.inputName.TextChanged += new System.EventHandler(this.inputName_TextChanged);
             // 
             // labelName
             // 

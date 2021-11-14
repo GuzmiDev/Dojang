@@ -107,6 +107,10 @@ namespace Dojang
                 imgPerfil.Image = ConvertByteArrayToImage(student.ImagePerfil);
 
             }
+            catch(System.NullReferenceException)
+            {
+
+            }
             catch (Exception)
             {
 
