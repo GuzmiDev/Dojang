@@ -29,23 +29,34 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.inputPlanStudentList = new System.Windows.Forms.ComboBox();
             this.inputLastNameStudentList = new System.Windows.Forms.TextBox();
-            this.inputName = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.inputNameStudentList = new System.Windows.Forms.TextBox();
+            this.inputBeltStudentList = new System.Windows.Forms.ComboBox();
+            this.inputScheduleStudentList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridStudents = new System.Windows.Forms.DataGridView();
+            this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Belt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Schedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cancelation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imgPerfil = new WinFormsApp1.Controls.CircularPictureBox();
             this.btnSaveBarCode = new System.Windows.Forms.Button();
             this.panelContainerBarCode = new System.Windows.Forms.Panel();
             this.nameStudentBarCode = new System.Windows.Forms.Label();
             this.panelBarCode = new System.Windows.Forms.Panel();
-            this.inputBeltStudentList = new System.Windows.Forms.ComboBox();
-            this.inputScheduleStudentList = new System.Windows.Forms.ComboBox();
-            this.inputPlanStudentList = new System.Windows.Forms.ComboBox();
+            this.btnRenew = new System.Windows.Forms.Button();
+            this.btnUpdateStudent = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.inputPhoneStudentList = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -59,49 +70,63 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 214F));
-            this.tableLayoutPanel1.Controls.Add(this.inputPlanStudentList, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.inputPhoneStudentList, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.inputLastNameStudentList, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.inputName, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelName, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.inputNameStudentList, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.inputBeltStudentList, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.inputScheduleStudentList, 1, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(614, 250);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.inputPlanStudentList, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.inputScheduleStudentList, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.inputBeltStudentList, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(614, 237);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(333, 192);
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(333, 205);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // inputPlanStudentList
+            // 
+            this.inputPlanStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputPlanStudentList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputPlanStudentList.FormattingEnabled = true;
+            this.inputPlanStudentList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.inputPlanStudentList.Location = new System.Drawing.Point(122, 176);
+            this.inputPlanStudentList.Name = "inputPlanStudentList";
+            this.inputPlanStudentList.Size = new System.Drawing.Size(208, 23);
+            this.inputPlanStudentList.TabIndex = 9;
             // 
             // inputLastNameStudentList
             // 
             this.inputLastNameStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputLastNameStudentList.Location = new System.Drawing.Point(122, 45);
+            this.inputLastNameStudentList.Location = new System.Drawing.Point(122, 39);
             this.inputLastNameStudentList.Name = "inputLastNameStudentList";
             this.inputLastNameStudentList.Size = new System.Drawing.Size(208, 23);
             this.inputLastNameStudentList.TabIndex = 6;
             // 
-            // inputName
+            // labelName
             // 
-            this.inputName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputName.AutoSize = true;
-            this.inputName.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.inputName.ForeColor = System.Drawing.Color.White;
-            this.inputName.Location = new System.Drawing.Point(3, 0);
-            this.inputName.Name = "inputName";
-            this.inputName.Size = new System.Drawing.Size(113, 38);
-            this.inputName.TabIndex = 0;
-            this.inputName.Text = "NOMBRE:";
-            this.inputName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelName.ForeColor = System.Drawing.Color.White;
+            this.labelName.Location = new System.Drawing.Point(3, 0);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(113, 34);
+            this.labelName.TabIndex = 0;
+            this.labelName.Text = "NOMBRE:";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
@@ -111,9 +136,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 38);
+            this.label2.Location = new System.Drawing.Point(3, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 38);
+            this.label2.Size = new System.Drawing.Size(113, 34);
             this.label2.TabIndex = 1;
             this.label2.Text = "APELLIDOS:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -126,9 +151,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 76);
+            this.label3.Location = new System.Drawing.Point(3, 102);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 38);
+            this.label3.Size = new System.Drawing.Size(113, 34);
             this.label3.TabIndex = 2;
             this.label3.Text = "CINTA:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -141,9 +166,9 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(3, 114);
+            this.label4.Location = new System.Drawing.Point(3, 136);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 38);
+            this.label4.Size = new System.Drawing.Size(113, 34);
             this.label4.TabIndex = 3;
             this.label4.Text = "HORARIO:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -156,9 +181,9 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(3, 152);
+            this.label5.Location = new System.Drawing.Point(3, 170);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 40);
+            this.label5.Size = new System.Drawing.Size(113, 35);
             this.label5.TabIndex = 4;
             this.label5.Text = "PLAN:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -166,15 +191,34 @@
             // inputNameStudentList
             // 
             this.inputNameStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputNameStudentList.Location = new System.Drawing.Point(122, 7);
+            this.inputNameStudentList.Location = new System.Drawing.Point(122, 5);
             this.inputNameStudentList.Name = "inputNameStudentList";
             this.inputNameStudentList.Size = new System.Drawing.Size(208, 23);
             this.inputNameStudentList.TabIndex = 5;
             // 
+            // inputBeltStudentList
+            // 
+            this.inputBeltStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputBeltStudentList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputBeltStudentList.FormattingEnabled = true;
+            this.inputBeltStudentList.Location = new System.Drawing.Point(122, 107);
+            this.inputBeltStudentList.Name = "inputBeltStudentList";
+            this.inputBeltStudentList.Size = new System.Drawing.Size(208, 23);
+            this.inputBeltStudentList.TabIndex = 7;
+            // 
+            // inputScheduleStudentList
+            // 
+            this.inputScheduleStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputScheduleStudentList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputScheduleStudentList.FormattingEnabled = true;
+            this.inputScheduleStudentList.Location = new System.Drawing.Point(122, 141);
+            this.inputScheduleStudentList.Name = "inputScheduleStudentList";
+            this.inputScheduleStudentList.Size = new System.Drawing.Size(208, 23);
+            this.inputScheduleStudentList.TabIndex = 8;
+            // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Roboto Medium", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
@@ -189,12 +233,64 @@
             this.dataGridStudents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StudentID,
+            this.Name,
+            this.LastName,
+            this.Belt,
+            this.Schedule,
+            this.Plan,
+            this.Cancelation});
             this.dataGridStudents.Location = new System.Drawing.Point(23, 118);
             this.dataGridStudents.Name = "dataGridStudents";
             this.dataGridStudents.RowTemplate.Height = 25;
             this.dataGridStudents.Size = new System.Drawing.Size(585, 469);
             this.dataGridStudents.TabIndex = 2;
+            this.dataGridStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridStudents_CellClick);
+            // 
+            // StudentID
+            // 
+            this.StudentID.HeaderText = "No";
+            this.StudentID.Name = "StudentID";
+            this.StudentID.ReadOnly = true;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Nombre";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            // 
+            // LastName
+            // 
+            this.LastName.HeaderText = "Apellidos";
+            this.LastName.Name = "LastName";
+            this.LastName.ReadOnly = true;
+            // 
+            // Belt
+            // 
+            this.Belt.HeaderText = "Cinta";
+            this.Belt.Name = "Belt";
+            this.Belt.ReadOnly = true;
+            // 
+            // Schedule
+            // 
+            this.Schedule.HeaderText = "Horario";
+            this.Schedule.Name = "Schedule";
+            this.Schedule.ReadOnly = true;
+            // 
+            // Plan
+            // 
+            this.Plan.HeaderText = "Plan";
+            this.Plan.Name = "Plan";
+            this.Plan.ReadOnly = true;
+            // 
+            // Cancelation
+            // 
+            this.Cancelation.HeaderText = "Cancelación";
+            this.Cancelation.Name = "Cancelation";
+            this.Cancelation.ReadOnly = true;
             // 
             // imgPerfil
             // 
@@ -257,33 +353,59 @@
             this.panelBarCode.Size = new System.Drawing.Size(198, 50);
             this.panelBarCode.TabIndex = 0;
             // 
-            // inputBeltStudentList
+            // btnRenew
             // 
-            this.inputBeltStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputBeltStudentList.FormattingEnabled = true;
-            this.inputBeltStudentList.Location = new System.Drawing.Point(122, 83);
-            this.inputBeltStudentList.Name = "inputBeltStudentList";
-            this.inputBeltStudentList.Size = new System.Drawing.Size(208, 23);
-            this.inputBeltStudentList.TabIndex = 7;
+            this.btnRenew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRenew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.btnRenew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRenew.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.btnRenew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRenew.Font = new System.Drawing.Font("Roboto Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRenew.ForeColor = System.Drawing.Color.White;
+            this.btnRenew.Location = new System.Drawing.Point(617, 448);
+            this.btnRenew.Name = "btnRenew";
+            this.btnRenew.Size = new System.Drawing.Size(140, 23);
+            this.btnRenew.TabIndex = 27;
+            this.btnRenew.Text = "RENOVAR";
+            this.btnRenew.UseVisualStyleBackColor = false;
+            this.btnRenew.Visible = false;
             // 
-            // inputScheduleStudentList
+            // btnUpdateStudent
             // 
-            this.inputScheduleStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputScheduleStudentList.FormattingEnabled = true;
-            this.inputScheduleStudentList.Location = new System.Drawing.Point(122, 121);
-            this.inputScheduleStudentList.Name = "inputScheduleStudentList";
-            this.inputScheduleStudentList.Size = new System.Drawing.Size(208, 23);
-            this.inputScheduleStudentList.TabIndex = 8;
+            this.btnUpdateStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.btnUpdateStudent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdateStudent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.btnUpdateStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateStudent.Font = new System.Drawing.Font("Roboto Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdateStudent.ForeColor = System.Drawing.Color.White;
+            this.btnUpdateStudent.Location = new System.Drawing.Point(804, 448);
+            this.btnUpdateStudent.Name = "btnUpdateStudent";
+            this.btnUpdateStudent.Size = new System.Drawing.Size(140, 23);
+            this.btnUpdateStudent.TabIndex = 28;
+            this.btnUpdateStudent.Text = "SALVAR";
+            this.btnUpdateStudent.UseVisualStyleBackColor = false;
+            this.btnUpdateStudent.Visible = false;
             // 
-            // inputPlanStudentList
+            // label6
             // 
-            this.inputPlanStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputPlanStudentList.FormattingEnabled = true;
-            this.inputPlanStudentList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.inputPlanStudentList.Location = new System.Drawing.Point(122, 160);
-            this.inputPlanStudentList.Name = "inputPlanStudentList";
-            this.inputPlanStudentList.Size = new System.Drawing.Size(208, 23);
-            this.inputPlanStudentList.TabIndex = 9;
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(3, 73);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 23);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "TELEFONO:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // inputPhoneStudentList
+            // 
+            this.inputPhoneStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputPhoneStudentList.Location = new System.Drawing.Point(122, 73);
+            this.inputPhoneStudentList.Name = "inputPhoneStudentList";
+            this.inputPhoneStudentList.Size = new System.Drawing.Size(208, 23);
+            this.inputPhoneStudentList.TabIndex = 11;
             // 
             // StudentList
             // 
@@ -291,6 +413,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(64)))), ((int)(((byte)(87)))));
             this.ClientSize = new System.Drawing.Size(959, 631);
+            this.Controls.Add(this.btnUpdateStudent);
+            this.Controls.Add(this.btnRenew);
             this.Controls.Add(this.btnSaveBarCode);
             this.Controls.Add(this.panelContainerBarCode);
             this.Controls.Add(this.imgPerfil);
@@ -298,7 +422,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "StudentList";
             this.Text = "StudentList";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -317,7 +440,7 @@
         private Label label1;
         private DataGridView dataGridStudents;
         private WinFormsApp1.Controls.CircularPictureBox imgPerfil;
-        private Label inputName;
+        private Label labelName;
         private Label label2;
         private Label label3;
         private Label label4;
@@ -331,5 +454,16 @@
         private ComboBox inputPlanStudentList;
         private ComboBox inputBeltStudentList;
         private ComboBox inputScheduleStudentList;
+        private Button btnRenew;
+        private Button btnUpdateStudent;
+        private DataGridViewTextBoxColumn StudentID;
+        private DataGridViewTextBoxColumn Name;
+        private DataGridViewTextBoxColumn LastName;
+        private DataGridViewTextBoxColumn Belt;
+        private DataGridViewTextBoxColumn Schedule;
+        private DataGridViewTextBoxColumn Plan;
+        private DataGridViewTextBoxColumn Cancelation;
+        private TextBox inputPhoneStudentList;
+        private Label label6;
     }
 }

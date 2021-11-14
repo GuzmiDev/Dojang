@@ -56,7 +56,7 @@ namespace Dojang
                 var daysLefts = (student.CancelationDate - date).Days;
                 var daysLeftsString = daysLefts.ToString();
 
-                if (daysLeftsString == "0")
+                if (daysLefts <= 0)
                 {
                     daysLeftsLabel.Text = "REQUIERE RENOVAR";
                     iconCorrect.Visible = false;
