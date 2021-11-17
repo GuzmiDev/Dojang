@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dojang.Utils
 {
-     public class BarCodeGenerator
+     sealed public class BarCodeGenerator
     {
         static public void generateBarCode(Panel barcodeContainer, Label labelUnderBarcode, string studentID, string studentName)
         {

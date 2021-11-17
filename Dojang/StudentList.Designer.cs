@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.inputPlanStudentList = new System.Windows.Forms.ComboBox();
+            this.inputPhoneStudentList = new System.Windows.Forms.TextBox();
             this.inputLastNameStudentList = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.inputNameStudentList = new System.Windows.Forms.TextBox();
-            this.inputBeltStudentList = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.inputPlanStudentList = new System.Windows.Forms.ComboBox();
             this.inputScheduleStudentList = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.inputBeltStudentList = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridStudents = new System.Windows.Forms.DataGridView();
             this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +49,7 @@
             this.Belt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Schedule = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cancelation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imgPerfil = new WinFormsApp1.Controls.CircularPictureBox();
             this.btnSaveBarCode = new System.Windows.Forms.Button();
@@ -55,8 +58,6 @@
             this.panelBarCode = new System.Windows.Forms.Panel();
             this.btnRenew = new System.Windows.Forms.Button();
             this.btnUpdateStudent = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.inputPhoneStudentList = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -94,16 +95,13 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(333, 205);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // inputPlanStudentList
+            // inputPhoneStudentList
             // 
-            this.inputPlanStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputPlanStudentList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.inputPlanStudentList.FormattingEnabled = true;
-            this.inputPlanStudentList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.inputPlanStudentList.Location = new System.Drawing.Point(122, 176);
-            this.inputPlanStudentList.Name = "inputPlanStudentList";
-            this.inputPlanStudentList.Size = new System.Drawing.Size(208, 23);
-            this.inputPlanStudentList.TabIndex = 9;
+            this.inputPhoneStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputPhoneStudentList.Location = new System.Drawing.Point(122, 73);
+            this.inputPhoneStudentList.Name = "inputPhoneStudentList";
+            this.inputPhoneStudentList.Size = new System.Drawing.Size(208, 23);
+            this.inputPhoneStudentList.TabIndex = 11;
             // 
             // inputLastNameStudentList
             // 
@@ -112,6 +110,7 @@
             this.inputLastNameStudentList.Name = "inputLastNameStudentList";
             this.inputLastNameStudentList.Size = new System.Drawing.Size(208, 23);
             this.inputLastNameStudentList.TabIndex = 6;
+            this.inputLastNameStudentList.TextChanged += new System.EventHandler(this.inputLastNameStudentList_TextChanged);
             // 
             // labelName
             // 
@@ -143,35 +142,14 @@
             this.label2.Text = "APELLIDOS:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label3
+            // inputNameStudentList
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 102);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 34);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "CINTA:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(3, 136);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 34);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "HORARIO:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.inputNameStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputNameStudentList.Location = new System.Drawing.Point(122, 5);
+            this.inputNameStudentList.Name = "inputNameStudentList";
+            this.inputNameStudentList.Size = new System.Drawing.Size(208, 23);
+            this.inputNameStudentList.TabIndex = 5;
+            this.inputNameStudentList.TextChanged += new System.EventHandler(this.inputNameStudentList_TextChanged);
             // 
             // label5
             // 
@@ -188,13 +166,41 @@
             this.label5.Text = "PLAN:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // inputNameStudentList
+            // inputPlanStudentList
             // 
-            this.inputNameStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputNameStudentList.Location = new System.Drawing.Point(122, 5);
-            this.inputNameStudentList.Name = "inputNameStudentList";
-            this.inputNameStudentList.Size = new System.Drawing.Size(208, 23);
-            this.inputNameStudentList.TabIndex = 5;
+            this.inputPlanStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputPlanStudentList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputPlanStudentList.FormattingEnabled = true;
+            this.inputPlanStudentList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.inputPlanStudentList.Location = new System.Drawing.Point(122, 176);
+            this.inputPlanStudentList.Name = "inputPlanStudentList";
+            this.inputPlanStudentList.Size = new System.Drawing.Size(208, 23);
+            this.inputPlanStudentList.TabIndex = 9;
+            // 
+            // inputScheduleStudentList
+            // 
+            this.inputScheduleStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputScheduleStudentList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputScheduleStudentList.FormattingEnabled = true;
+            this.inputScheduleStudentList.Location = new System.Drawing.Point(122, 141);
+            this.inputScheduleStudentList.Name = "inputScheduleStudentList";
+            this.inputScheduleStudentList.Size = new System.Drawing.Size(208, 23);
+            this.inputScheduleStudentList.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(3, 102);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 34);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "CINTA:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // inputBeltStudentList
             // 
@@ -206,15 +212,32 @@
             this.inputBeltStudentList.Size = new System.Drawing.Size(208, 23);
             this.inputBeltStudentList.TabIndex = 7;
             // 
-            // inputScheduleStudentList
+            // label4
             // 
-            this.inputScheduleStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputScheduleStudentList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.inputScheduleStudentList.FormattingEnabled = true;
-            this.inputScheduleStudentList.Location = new System.Drawing.Point(122, 141);
-            this.inputScheduleStudentList.Name = "inputScheduleStudentList";
-            this.inputScheduleStudentList.Size = new System.Drawing.Size(208, 23);
-            this.inputScheduleStudentList.TabIndex = 8;
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(3, 136);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(113, 34);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "HORARIO:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(3, 73);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 23);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "TELEFONO:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
@@ -242,6 +265,7 @@
             this.Belt,
             this.Schedule,
             this.Plan,
+            this.PhoneColumn,
             this.Cancelation});
             this.dataGridStudents.Location = new System.Drawing.Point(23, 118);
             this.dataGridStudents.Name = "dataGridStudents";
@@ -286,6 +310,12 @@
             this.Plan.Name = "Plan";
             this.Plan.ReadOnly = true;
             // 
+            // PhoneColumn
+            // 
+            this.PhoneColumn.HeaderText = "Telefono";
+            this.PhoneColumn.Name = "PhoneColumn";
+            this.PhoneColumn.ReadOnly = true;
+            // 
             // Cancelation
             // 
             this.Cancelation.HeaderText = "Cancelación";
@@ -323,6 +353,7 @@
             this.btnSaveBarCode.TabIndex = 26;
             this.btnSaveBarCode.Text = "GUARDAR CODIGO";
             this.btnSaveBarCode.UseVisualStyleBackColor = false;
+            this.btnSaveBarCode.Click += new System.EventHandler(this.btnSaveBarCode_Click);
             // 
             // panelContainerBarCode
             // 
@@ -386,26 +417,7 @@
             this.btnUpdateStudent.Text = "SALVAR";
             this.btnUpdateStudent.UseVisualStyleBackColor = false;
             this.btnUpdateStudent.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(3, 73);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(113, 23);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "TELEFONO:";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // inputPhoneStudentList
-            // 
-            this.inputPhoneStudentList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputPhoneStudentList.Location = new System.Drawing.Point(122, 73);
-            this.inputPhoneStudentList.Name = "inputPhoneStudentList";
-            this.inputPhoneStudentList.Size = new System.Drawing.Size(208, 23);
-            this.inputPhoneStudentList.TabIndex = 11;
+            this.btnUpdateStudent.Click += new System.EventHandler(this.btnUpdateStudent_Click);
             // 
             // StudentList
             // 
@@ -456,14 +468,15 @@
         private ComboBox inputScheduleStudentList;
         private Button btnRenew;
         private Button btnUpdateStudent;
+        private TextBox inputPhoneStudentList;
+        private Label label6;
         private DataGridViewTextBoxColumn StudentID;
         private DataGridViewTextBoxColumn Name;
         private DataGridViewTextBoxColumn LastName;
         private DataGridViewTextBoxColumn Belt;
         private DataGridViewTextBoxColumn Schedule;
         private DataGridViewTextBoxColumn Plan;
+        private DataGridViewTextBoxColumn PhoneColumn;
         private DataGridViewTextBoxColumn Cancelation;
-        private TextBox inputPhoneStudentList;
-        private Label label6;
     }
 }

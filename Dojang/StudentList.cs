@@ -1,4 +1,5 @@
 ﻿using Business;
+using Dojang.Utils;
 using Entities;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace Dojang
         private PaymentPlanEntity paymentPlan;
         private List<StudentEntity> students;
         private StudentEntity student;
+        private int index;
 
         public StudentList()
         {
@@ -34,22 +36,26 @@ namespace Dojang
         private void loadGridStudentList()
         {
             students = B_Students.GetAll();
-            foreach (var student in students)
-            {
-                int n = dataGridStudents.Rows.Add();
-                student.Belt = DojangForm.Belts[student.BeltID - 1];
-                student.Schedule = DojangForm.Schedules[student.ScheduleID - 1];
-                student.PaymentPlan = DojangForm.PaymentPlans[student.PaymentPlanID - 1];
+            
+                foreach (var student in students)
+                {
+                    int n = dataGridStudents.Rows.Add();
+                    student.Belt = DojangForm.Belts[student.BeltID - 1];
+                    student.Schedule = DojangForm.Schedules[student.ScheduleID - 1];
+                    student.PaymentPlan = DojangForm.PaymentPlans[student.PaymentPlanID - 1];
 
-                dataGridStudents.Rows[n].Cells[0].Value = student.StudentID;
-                dataGridStudents.Rows[n].Cells[1].Value = student.Name;
-                dataGridStudents.Rows[n].Cells[2].Value = student.LastName;
-                dataGridStudents.Rows[n].Cells[3].Value = student.Belt.BeltName;
-                dataGridStudents.Rows[n].Cells[4].Value = student.Schedule.Schedule;
-                dataGridStudents.Rows[n].Cells[5].Value = student.PaymentPlan.Name;
-                dataGridStudents.Rows[n].Cells[6].Value = student.CancelationDate;
+                    dataGridStudents.Rows[n].Cells[0].Value = student.StudentID;
+                    dataGridStudents.Rows[n].Cells[1].Value = student.Name;
+                    dataGridStudents.Rows[n].Cells[2].Value = student.LastName;
+                    dataGridStudents.Rows[n].Cells[3].Value = student.Belt.BeltName;
+                    dataGridStudents.Rows[n].Cells[4].Value = student.Schedule.Schedule;
+                    dataGridStudents.Rows[n].Cells[5].Value = student.PaymentPlan.Name;
+                    dataGridStudents.Rows[n].Cells[6].Value = student.Phone;
+                    dataGridStudents.Rows[n].Cells[7].Value = student.CancelationDate;
 
-            }
+                }
+
+            
         }
         private void loadBelts(List<BeltEntity> Belts)
         {
@@ -74,40 +80,64 @@ namespace Dojang
             }
         }
 
-        //ShowSelectedData
-        private void fillInputsFromStudent()
+        //Update Student
+        private void UpdateStudent()
         {
+            student.Name = inputNameStudentList.Text;
+            student.LastName = inputLastNameStudentList.Text;
+            student.Phone = inputPhoneStudentList.Text;
 
-        }
+            student.BeltID = inputBeltStudentList.SelectedIndex + 1;
+            student.Belt = DojangForm.Belts.ElementAt(student.BeltID - 1);
 
-        private void dataGridStudents_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+            student.ScheduleID = inputScheduleStudentList.SelectedIndex +1;
+            student.Schedule = DojangForm.Schedules.ElementAt(student.ScheduleID - 1);
 
+            student.PaymentPlanID = inputPlanStudentList.SelectedIndex + 1;
+            student.PaymentPlan = DojangForm.PaymentPlans.ElementAt(student.PaymentPlanID - 1);
+
+
+            if(student.PaymentPlanID != inputPlanStudentList.SelectedIndex + 1)
+            {
+                student.CancelationDate = student.CancelationDate.AddDays(30);
+            }
 
             try
             {
-                int index = e.RowIndex;
+            B_Students.Update(student);
+                AlertBox.SimpleMessage("Estudiante acutalizado.");
+
+            }
+            catch (Exception)
+            {
+                AlertBox.Error("Error al actualizar estudiante en la base de datos.");
+            }
+        }
+
+        //ShowSelectedData
+        private void fillInputsFromStudent(DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.index = e.RowIndex;
 
                 var selectedRow = dataGridStudents.Rows[index];
 
-                this.belt = DojangForm.Belts.FirstOrDefault(b => b.BeltName == selectedRow.Cells[3].Value.ToString());
-                this.schedule = DojangForm.Schedules.FirstOrDefault(b => b.Schedule == selectedRow.Cells[4].Value.ToString());
-                this.paymentPlan = DojangForm.PaymentPlans.FirstOrDefault(b => b.Name == selectedRow.Cells[5].Value.ToString());
-
+              
                 var studentIDRow = selectedRow.Cells[0].Value.ToString();
                 var studentIndex = Int32.Parse(studentIDRow);
-                this.student = students.ElementAt(studentIndex-1);
+                this.student = students.ElementAt(studentIndex - 1);
 
-                inputNameStudentList.Text = selectedRow.Cells[1].Value.ToString();
-                inputLastNameStudentList.Text = selectedRow.Cells[2].Value.ToString();
-                inputPhoneStudentList.Text = selectedRow.Cells[5].Value.ToString();
-                inputBeltStudentList.SelectedIndex = belt.BeltID -1;
-                inputScheduleStudentList.SelectedIndex = schedule.ScheduleID -1;
-                inputPlanStudentList.SelectedIndex = paymentPlan.PaymentPlanID -1;
-                imgPerfil.Image = ConvertByteArrayToImage(student.ImagePerfil);
+                inputNameStudentList.Text = student.Name;
+                inputLastNameStudentList.Text = student.LastName;
+                inputPhoneStudentList.Text = student.Phone;
+                inputBeltStudentList.SelectedIndex = student.BeltID - 1;
+                inputScheduleStudentList.SelectedIndex = student.ScheduleID -1;
+                inputPlanStudentList.SelectedIndex = student.PaymentPlanID - 1;
+                imgPerfil.Image = ImageManipulator.ConvertByteArrayToImage(student.ImagePerfil);
 
             }
-            catch(System.NullReferenceException)
+            catch (System.NullReferenceException)
             {
 
             }
@@ -116,12 +146,58 @@ namespace Dojang
 
             }
         }
-        private Image ConvertByteArrayToImage(byte[] data)
+
+        //Clear inputs
+        private void ClearInputs()
         {
-            using (MemoryStream ms = new MemoryStream(data))
+            inputNameStudentList.Text = "";
+            inputLastNameStudentList.Text = "";
+            inputPhoneStudentList.Text = "";
+            inputBeltStudentList.SelectedIndex = -1;
+            inputScheduleStudentList.SelectedIndex = -1;
+            inputPlanStudentList.SelectedIndex = -1;
+            imgPerfil.Image = null;
+            panelBarCode.BackgroundImage = null;
+        }
+
+        //Controls
+        private void dataGridStudents_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            fillInputsFromStudent(e);
+            btnUpdateStudent.Visible = true;
+        }
+
+        private void btnSaveBarCode_Click(object sender, EventArgs e)
+        {
+            if (student != null)
             {
-                return Image.FromStream(ms);
+
+            BarCodeGenerator.SaveBarcode(panelContainerBarCode, nameStudentBarCode, student.StudentID);
             }
+            else
+            {
+                AlertBox.Error("Seleccione un estudiante primero");
+            }
+        }
+
+        private void inputNameStudentList_TextChanged(object sender, EventArgs e)
+        {
+            BarCodeGenerator.generateBarCode(panelBarCode, nameStudentBarCode, student.StudentID, inputNameStudentList.Text + " " + inputLastNameStudentList.Text);
+
+        }
+
+        private void inputLastNameStudentList_TextChanged(object sender, EventArgs e)
+        {
+            BarCodeGenerator.generateBarCode(panelBarCode, nameStudentBarCode, student.StudentID, inputNameStudentList.Text + " " + inputLastNameStudentList.Text);
+
+        }
+
+        private void btnUpdateStudent_Click(object sender, EventArgs e)
+        {
+            UpdateStudent();
+            ClearInputs();
+            dataGridStudents.Rows.Clear();
+            loadGridStudentList();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Business;
 using Entities;
+using Dojang.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,7 +36,7 @@ namespace Dojang
                 Student = B_Students.GetById(studentCode);
                 if (Student == null)
                 {
-                    MessageBox.Show("No existe estudiante con este ID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AlertBox.Error("No existe estuidante con este ID");
                 }
                 else
                 {

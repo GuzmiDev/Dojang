@@ -91,8 +91,9 @@ namespace Dojang
             }
 
 
-            student.ImagePerfil = ConvertImageToBytes(pictureBox1.Image);
-            student.ImageBarCode = ConvertImageToBytes(getBarcodePanelImage());
+
+            student.ImagePerfil = ImageManipulator.ConvertImageToBytes(pictureBox1.Image);
+            student.ImageBarCode = ImageManipulator.ConvertImageToBytes(getBarcodePanelImage());
             student.BeltID = InputBelt.SelectedIndex + 1;
             student.ScheduleID = inputSchedule.SelectedIndex + 1;
             student.PaymentPlanID = inputPaymentPlan.SelectedIndex + 1;
@@ -241,23 +242,6 @@ namespace Dojang
         }
 
 
-
-        //Methods for manipulate image and byte
-        private Image ConvertByteArrayToImage(byte[] data)
-        {
-            using (MemoryStream ms = new MemoryStream(data))
-            {
-                return Image.FromStream(ms);
-            }
-        }
-        private byte[] ConvertImageToBytes(Image img)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                img.Save(ms, ImageFormat.Png);
-                return ms.ToArray();
-            }
-        }
 
         private void inputPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
