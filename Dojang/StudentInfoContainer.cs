@@ -1,4 +1,5 @@
 ﻿using Business;
+using Dojang.Utils;
 using Entities;
 using System;
 using System.Collections.Generic;
@@ -75,6 +76,64 @@ namespace Dojang
 
                 }
 
+
+        }
+
+        private void updatePlan(PaymentPlanEntity plan)
+        {
+            switch (plan.Name)
+            {
+                case "SEMANAL":
+                    student.CancelationDate = DateTime.Today.AddDays(7);
+                    break;
+                case "MENSUAL":
+                    student.CancelationDate = DateTime.Today.AddDays(30);
+                    break;
+                default:
+                    AlertBox.Error("Error al elegir plan");
+                break;
+            }
+            try
+            {
+            B_Students.Update(student);
+            AlertBox.SimpleMessage("Renovación exitosa");
+
+            }
+            catch (Exception)
+            {
+
+                AlertBox.Error("Error al actualizar suscripcion");
+            }
+
+        }
+        private void reloadPlan()
+        {
+            btnMonth.Visible = false;
+            btnWeek.Visible = false;
+            labelBetweenBtns.Visible = false;
+            btnRenew.Visible=false;
+            iconError.Visible = false;
+            iconCorrect.Visible = true;
+        }
+
+        private void btnRenew_Click(object sender, EventArgs e)
+        {
+            labelBetweenBtns.Visible = true;
+            btnMonth.Visible = true;
+            btnWeek.Visible = true;
+            btnRenew.Visible = false;
+        }
+
+        private void btnWeek_Click(object sender, EventArgs e)
+        {
+            updatePlan(DojangForm.PaymentPlans.FirstOrDefault(plan => plan.Name == "SEMANAL"));
+            reloadPlan();
+        }
+
+        private void btnMonth_Click(object sender, EventArgs e)
+        {
+            updatePlan(DojangForm.PaymentPlans.FirstOrDefault(plan => plan.Name == "MENSUAL"));
+            reloadPlan();
 
         }
     }

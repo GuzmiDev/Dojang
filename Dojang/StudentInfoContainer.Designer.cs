@@ -36,6 +36,9 @@
             this.iconError = new System.Windows.Forms.PictureBox();
             this.btnRenew = new System.Windows.Forms.Button();
             this.iconCorrect = new System.Windows.Forms.PictureBox();
+            this.btnWeek = new System.Windows.Forms.Button();
+            this.btnMonth = new System.Windows.Forms.Button();
+            this.labelBetweenBtns = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconError)).BeginInit();
@@ -124,6 +127,7 @@
             this.btnRenew.Text = "RENOVAR";
             this.btnRenew.UseVisualStyleBackColor = false;
             this.btnRenew.Visible = false;
+            this.btnRenew.Click += new System.EventHandler(this.btnRenew_Click);
             // 
             // iconCorrect
             // 
@@ -135,12 +139,63 @@
             this.iconCorrect.TabIndex = 7;
             this.iconCorrect.TabStop = false;
             // 
+            // btnWeek
+            // 
+            this.btnWeek.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.btnWeek.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnWeek.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWeek.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.btnWeek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWeek.Font = new System.Drawing.Font("Roboto Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnWeek.ForeColor = System.Drawing.Color.White;
+            this.btnWeek.Location = new System.Drawing.Point(215, 390);
+            this.btnWeek.Name = "btnWeek";
+            this.btnWeek.Size = new System.Drawing.Size(116, 40);
+            this.btnWeek.TabIndex = 9;
+            this.btnWeek.Text = "SEMANAL";
+            this.btnWeek.UseVisualStyleBackColor = false;
+            this.btnWeek.Visible = false;
+            this.btnWeek.Click += new System.EventHandler(this.btnWeek_Click);
+            // 
+            // btnMonth
+            // 
+            this.btnMonth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.btnMonth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnMonth.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMonth.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.btnMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMonth.Font = new System.Drawing.Font("Roboto Medium", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnMonth.ForeColor = System.Drawing.Color.White;
+            this.btnMonth.Location = new System.Drawing.Point(463, 390);
+            this.btnMonth.Name = "btnMonth";
+            this.btnMonth.Size = new System.Drawing.Size(116, 40);
+            this.btnMonth.TabIndex = 10;
+            this.btnMonth.Text = "MENSUAL";
+            this.btnMonth.UseVisualStyleBackColor = false;
+            this.btnMonth.Visible = false;
+            this.btnMonth.Click += new System.EventHandler(this.btnMonth_Click);
+            // 
+            // labelBetweenBtns
+            // 
+            this.labelBetweenBtns.AutoSize = true;
+            this.labelBetweenBtns.Font = new System.Drawing.Font("Roboto Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelBetweenBtns.ForeColor = System.Drawing.Color.White;
+            this.labelBetweenBtns.Location = new System.Drawing.Point(381, 396);
+            this.labelBetweenBtns.Name = "labelBetweenBtns";
+            this.labelBetweenBtns.Size = new System.Drawing.Size(31, 29);
+            this.labelBetweenBtns.TabIndex = 11;
+            this.labelBetweenBtns.Text = "O";
+            this.labelBetweenBtns.Visible = false;
+            // 
             // StudentInfoContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(44)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelBetweenBtns);
+            this.Controls.Add(this.btnMonth);
+            this.Controls.Add(this.btnWeek);
             this.Controls.Add(this.btnRenew);
             this.Controls.Add(this.iconCorrect);
             this.Controls.Add(this.iconError);
@@ -171,5 +226,8 @@
         private PictureBox iconError;
         private Button btnRenew;
         private PictureBox iconCorrect;
+        private Button btnWeek;
+        private Button btnMonth;
+        private Label labelBetweenBtns;
     }
 }
