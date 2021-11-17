@@ -84,10 +84,12 @@ namespace Dojang
             switch (plan.Name)
             {
                 case "SEMANAL":
-                    student.CancelationDate = DateTime.Today.AddDays(7);
+                    student.CancelationDate = DateTime.Today.AddDays(plan.Days);
+                    student.PaymentPlan = plan;
                     break;
                 case "MENSUAL":
-                    student.CancelationDate = DateTime.Today.AddDays(30);
+                    student.CancelationDate = DateTime.Today.AddDays(plan.Days);
+                    student.PaymentPlan = plan;
                     break;
                 default:
                     AlertBox.Error("Error al elegir plan");
@@ -95,6 +97,14 @@ namespace Dojang
             }
             try
             {
+            var paymentHistory = new PaymentHistoryEntity();
+                paymentHistory.Date = DateTime.Now;
+                paymentHistory.StudentID = student.StudentID;
+                paymentHistory.TypeOfTransaction = typeOfTransaction.Renovation;
+                paymentHistory.PriceInTheMoment = plan.Price;
+                paymentHistory.PaymentPlanInTheMoment = plan.Name;
+
+                B_PaymentHistory.Save(paymentHistory);
             B_Students.Update(student);
             AlertBox.SimpleMessage("Renovación exitosa");
 

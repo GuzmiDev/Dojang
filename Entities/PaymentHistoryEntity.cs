@@ -29,6 +29,7 @@ namespace Entities
     public enum typeOfTransaction
     {
         Suscription,
-        Renovation
+        Renovation,
+        Prolongation,
     }
 }

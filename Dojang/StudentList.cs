@@ -15,11 +15,10 @@ namespace Dojang
 {
     public partial class StudentList : Form
     {
-        private BeltEntity belt;
-        private ScheduleEntity schedule;
-        private PaymentPlanEntity paymentPlan;
+        private PaymentPlanEntity paymentPlanSelected;
         private List<StudentEntity> students;
         private StudentEntity student;
+        private int dayLefts;
         private int index;
 
         public StudentList()
@@ -97,10 +96,6 @@ namespace Dojang
             student.PaymentPlan = DojangForm.PaymentPlans.ElementAt(student.PaymentPlanID - 1);
 
 
-            if(student.PaymentPlanID != inputPlanStudentList.SelectedIndex + 1)
-            {
-                student.CancelationDate = student.CancelationDate.AddDays(30);
-            }
 
             try
             {
@@ -127,6 +122,8 @@ namespace Dojang
                 var studentIDRow = selectedRow.Cells[0].Value.ToString();
                 var studentIndex = Int32.Parse(studentIDRow);
                 this.student = students.ElementAt(studentIndex - 1);
+
+                this.dayLefts = (student.CancelationDate - DateTime.Now).Days;
 
                 inputNameStudentList.Text = student.Name;
                 inputLastNameStudentList.Text = student.LastName;
@@ -160,11 +157,98 @@ namespace Dojang
             panelBarCode.BackgroundImage = null;
         }
 
+        //RENEW
+        private void renewSuscription(PaymentPlanEntity plan)
+        {
+            switch (plan.Name)
+            {
+                case "SEMANAL":
+                    student.CancelationDate = DateTime.Today.AddDays(plan.Days);
+                    student.PaymentPlan = paymentPlanSelected;
+                    break;
+                case "MENSUAL":
+                    student.CancelationDate = DateTime.Today.AddDays(plan.Days);
+                    student.PaymentPlan = paymentPlanSelected;
+                    break;
+                default:
+                    AlertBox.Error("Error al elegir plan");
+                    break;
+            }
+
+
+            try
+            {
+                var paymentHistory = new PaymentHistoryEntity();
+                paymentHistory.Date = DateTime.Now;
+                paymentHistory.StudentID = student.StudentID;
+                paymentHistory.TypeOfTransaction = typeOfTransaction.Renovation;
+                paymentHistory.PriceInTheMoment = plan.Price;
+                paymentHistory.PaymentPlanInTheMoment = plan.Name;
+
+                B_PaymentHistory.Save(paymentHistory);
+                B_Students.Update(student);
+                AlertBox.SimpleMessage("Renovación exitosa");
+
+            }
+            catch (Exception)
+            {
+                AlertBox.Error("Error al actualizar suscripcion");
+            }
+        }
+        //PROLNG
+        private void prolongSusctiption(PaymentPlanEntity plan)
+        {
+            switch (plan.Name)
+            {
+                case "SEMANAL":
+                    student.CancelationDate = DateTime.Today.AddDays(this.dayLefts +plan.Days);
+                    student.PaymentPlan = paymentPlanSelected;
+                    break;
+                case "MENSUAL":
+                    student.CancelationDate = DateTime.Today.AddDays(this.dayLefts + plan.Days);
+                    student.PaymentPlan = paymentPlanSelected;
+                    break;
+                default:
+                    AlertBox.Error("Error al elegir plan");
+                    break;
+            }
+
+
+            try
+            {
+                var paymentHistory = new PaymentHistoryEntity();
+                paymentHistory.Date = DateTime.Now;
+                paymentHistory.StudentID = student.StudentID;
+                paymentHistory.TypeOfTransaction = typeOfTransaction.Prolongation;
+                paymentHistory.PriceInTheMoment = plan.Price;
+                paymentHistory.PaymentPlanInTheMoment = plan.Name;
+
+                B_PaymentHistory.Save(paymentHistory);
+                B_Students.Update(student);
+                AlertBox.SimpleMessage("Renovación exitosa");
+
+            }
+            catch (Exception)
+            {
+                AlertBox.Error("Error al actualizar suscripcion");
+            }
+        }
+
         //Controls
         private void dataGridStudents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             fillInputsFromStudent(e);
             btnUpdateStudent.Visible = true;
+            btnRenew.Visible = true;
+
+            if(dayLefts > 0)
+            {
+            btnProlong.Visible = true;
+            }
+            else
+            {
+                btnProlong.Visible = false;
+            }
         }
 
         private void btnSaveBarCode_Click(object sender, EventArgs e)
@@ -199,5 +283,25 @@ namespace Dojang
             dataGridStudents.Rows.Clear();
             loadGridStudentList();
         }
+        private void btnRenew_Click(object sender, EventArgs e)
+        {
+            renewSuscription(DojangForm.PaymentPlans.ElementAt(inputPlanStudentList.SelectedIndex));
+            dataGridStudents.Rows.Clear();
+            loadGridStudentList();
+        }
+        private void btnProlong_Click(object sender, EventArgs e)
+        {
+            prolongSusctiption(DojangForm.PaymentPlans.ElementAt(inputPlanStudentList.SelectedIndex));
+            dataGridStudents.Rows.Clear();
+            loadGridStudentList();
+        }
+
+        private void inputPlanStudentList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(inputPlanStudentList.SelectedIndex > 0)
+                this.paymentPlanSelected = DojangForm.PaymentPlans.ElementAt(inputPlanStudentList.SelectedIndex);
+        }
+
+       
     }
 }
