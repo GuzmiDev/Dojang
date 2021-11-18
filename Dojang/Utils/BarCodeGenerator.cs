@@ -24,16 +24,20 @@ namespace Dojang.Utils
             Bitmap bm = new Bitmap(width, height);
             panelContainer.DrawToBitmap(bm, new Rectangle(0, 0, width, height));
 
-            SaveFileDialog CajaDeDiaologoGuardar = new SaveFileDialog();
+            using (SaveFileDialog CajaDeDiaologoGuardar = new SaveFileDialog())
+            {
             CajaDeDiaologoGuardar.FileName = studentNumber + labelUnderBarcode.Text;
             CajaDeDiaologoGuardar.AddExtension = true;
             CajaDeDiaologoGuardar.Filter = "Image PNG (*.png)|*.png";
-            CajaDeDiaologoGuardar.ShowDialog();
-            if (!string.IsNullOrEmpty(CajaDeDiaologoGuardar.FileName))
-            {
-                bm.Save(CajaDeDiaologoGuardar.FileName, ImageFormat.Png);
+            if(CajaDeDiaologoGuardar.ShowDialog() == DialogResult.OK)
+                {
+                    if (!string.IsNullOrEmpty(CajaDeDiaologoGuardar.FileName))
+                    {
+                        bm.Save(CajaDeDiaologoGuardar.FileName, ImageFormat.Png);
+                    }
+                }
+           
             }
-            bm.Dispose();
         }
     }
     

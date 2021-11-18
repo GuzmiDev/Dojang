@@ -229,6 +229,7 @@
             this.mainContainer.Name = "mainContainer";
             this.mainContainer.Size = new System.Drawing.Size(959, 681);
             this.mainContainer.TabIndex = 1;
+            this.mainContainer.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.mainContainer_ControlRemoved);
             // 
             // DojangForm
             // 

@@ -174,19 +174,13 @@ namespace Dojang
             pictureBox1.Image = Imagen;
         }
 
-        private void CerrarWebCam()
+         private void CerrarWebCam()
         {
             if(MiWebCam !=null && MiWebCam.IsRunning)
             {
                 MiWebCam.SignalToStop();
                 MiWebCam = null;
             }
-        }
-
-        private void StudentRegister_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            CerrarWebCam();
-            Application.Exit();
         }
 
         private void btnRecord_Click(object sender, EventArgs e)
@@ -242,7 +236,6 @@ namespace Dojang
         }
 
 
-
         private void inputPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -251,5 +244,9 @@ namespace Dojang
             }
         }
 
+        private void StudentRegister_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CerrarWebCam();
+        }
     }
 }

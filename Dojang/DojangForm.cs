@@ -1,4 +1,5 @@
 ﻿using Business;
+using Dojang.Utils;
 using Entities;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Dojang
     {
         private int[] btnColorsHover = { 57, 57, 75 };
         private int[] btnColorsLeave = { 35, 35, 44 };
+        private Form fh;
         static public List<BeltEntity> Belts { get; set; }
         static public List<ScheduleEntity> Schedules{ get; set; }
         static public List<PaymentPlanEntity> PaymentPlans { get; set; }
@@ -48,7 +50,7 @@ namespace Dojang
         {
             if (mainContainer.Controls.Count > 0)
                 mainContainer.Controls.RemoveAt(0);
-            Form fh = childForm as Form;
+            fh = childForm as Form;
             fh.TopLevel = false;
             fh.Dock = DockStyle.Fill;
             mainContainer.Controls.Add(fh);
@@ -114,6 +116,12 @@ namespace Dojang
         private void label2_Click(object sender, EventArgs e)
         {
             OpenChildForm(new StudentList());
+        }
+
+        private void mainContainer_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            fh.Close();
+         
         }
     }
 }

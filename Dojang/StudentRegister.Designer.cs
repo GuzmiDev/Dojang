@@ -387,6 +387,7 @@
             this.inputPhone.Name = "inputPhone";
             this.inputPhone.Size = new System.Drawing.Size(241, 23);
             this.inputPhone.TabIndex = 71;
+            this.inputPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputPhone_KeyPress);
             // 
             // labelPhone
             // 
