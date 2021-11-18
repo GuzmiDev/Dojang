@@ -29,34 +29,32 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnConfiguration = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnDataGrid = new System.Windows.Forms.Panel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnRegisterStudent = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnHome = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.labelHome = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.barBlueStudents = new System.Windows.Forms.Panel();
+            this.btnDataGrid = new System.Windows.Forms.Button();
+            this.barBlueRegisterStudent = new System.Windows.Forms.Panel();
+            this.btnRegisterStudent = new System.Windows.Forms.Button();
+            this.barBlueHome = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.barBlueConfiguration = new System.Windows.Forms.Panel();
+            this.btnConfiguration = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.mainContainer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
-            this.btnConfiguration.SuspendLayout();
-            this.btnDataGrid.SuspendLayout();
-            this.btnRegisterStudent.SuspendLayout();
-            this.btnHome.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
-            this.panel1.Controls.Add(this.btnConfiguration);
+            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.barBlueStudents);
             this.panel1.Controls.Add(this.btnDataGrid);
+            this.panel1.Controls.Add(this.barBlueRegisterStudent);
             this.panel1.Controls.Add(this.btnRegisterStudent);
+            this.panel1.Controls.Add(this.barBlueHome);
             this.panel1.Controls.Add(this.btnHome);
+            this.panel1.Controls.Add(this.barBlueConfiguration);
+            this.panel1.Controls.Add(this.btnConfiguration);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -64,152 +62,121 @@
             this.panel1.Size = new System.Drawing.Size(305, 681);
             this.panel1.TabIndex = 0;
             // 
-            // btnConfiguration
+            // btnExit
             // 
-            this.btnConfiguration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfiguration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(44)))));
-            this.btnConfiguration.Controls.Add(this.panel11);
-            this.btnConfiguration.Controls.Add(this.label3);
-            this.btnConfiguration.Location = new System.Drawing.Point(0, 466);
-            this.btnConfiguration.Name = "btnConfiguration";
-            this.btnConfiguration.Size = new System.Drawing.Size(305, 60);
-            this.btnConfiguration.TabIndex = 2;
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(35)))), ((int)(((byte)(44)))));
+            this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(0, 621);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(305, 60);
+            this.btnExit.TabIndex = 12;
+            this.btnExit.Text = "SALIR";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // panel11
+            // barBlueStudents
             // 
-            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel11.Location = new System.Drawing.Point(0, 0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(15, 60);
-            this.panel11.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(305, 60);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "CONFIGURACION";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.barBlueStudents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.barBlueStudents.Location = new System.Drawing.Point(0, 386);
+            this.barBlueStudents.Name = "barBlueStudents";
+            this.barBlueStudents.Size = new System.Drawing.Size(15, 60);
+            this.barBlueStudents.TabIndex = 11;
+            this.barBlueStudents.Visible = false;
             // 
             // btnDataGrid
             // 
-            this.btnDataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDataGrid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(44)))));
-            this.btnDataGrid.Controls.Add(this.panel9);
-            this.btnDataGrid.Controls.Add(this.label2);
-            this.btnDataGrid.Location = new System.Drawing.Point(0, 388);
+            this.btnDataGrid.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDataGrid.FlatAppearance.BorderSize = 0;
+            this.btnDataGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDataGrid.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDataGrid.ForeColor = System.Drawing.Color.White;
+            this.btnDataGrid.Location = new System.Drawing.Point(0, 386);
             this.btnDataGrid.Name = "btnDataGrid";
             this.btnDataGrid.Size = new System.Drawing.Size(305, 60);
-            this.btnDataGrid.TabIndex = 2;
-            this.btnDataGrid.MouseLeave += new System.EventHandler(this.btnHome_MouseLeave);
-            this.btnDataGrid.MouseHover += new System.EventHandler(this.btnHome_MouseHover);
+            this.btnDataGrid.TabIndex = 10;
+            this.btnDataGrid.Text = "ALUMNOS";
+            this.btnDataGrid.UseVisualStyleBackColor = false;
+            this.btnDataGrid.Click += new System.EventHandler(this.btnStudentList_Click);
             // 
-            // panel9
+            // barBlueRegisterStudent
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(15, 60);
-            this.panel9.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(305, 60);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "ALUMNOS";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.barBlueRegisterStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.barBlueRegisterStudent.Location = new System.Drawing.Point(0, 310);
+            this.barBlueRegisterStudent.Name = "barBlueRegisterStudent";
+            this.barBlueRegisterStudent.Size = new System.Drawing.Size(15, 60);
+            this.barBlueRegisterStudent.TabIndex = 9;
+            this.barBlueRegisterStudent.Visible = false;
             // 
             // btnRegisterStudent
             // 
-            this.btnRegisterStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegisterStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(44)))));
-            this.btnRegisterStudent.Controls.Add(this.panel7);
-            this.btnRegisterStudent.Controls.Add(this.label1);
             this.btnRegisterStudent.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRegisterStudent.Location = new System.Drawing.Point(0, 312);
+            this.btnRegisterStudent.FlatAppearance.BorderSize = 0;
+            this.btnRegisterStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegisterStudent.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnRegisterStudent.ForeColor = System.Drawing.Color.White;
+            this.btnRegisterStudent.Location = new System.Drawing.Point(0, 310);
             this.btnRegisterStudent.Name = "btnRegisterStudent";
             this.btnRegisterStudent.Size = new System.Drawing.Size(305, 60);
-            this.btnRegisterStudent.TabIndex = 2;
+            this.btnRegisterStudent.TabIndex = 8;
+            this.btnRegisterStudent.Text = "REGISTRAR ALUMNO";
+            this.btnRegisterStudent.UseVisualStyleBackColor = false;
             this.btnRegisterStudent.Click += new System.EventHandler(this.btnRegisterStudent_Click);
-            this.btnRegisterStudent.MouseLeave += new System.EventHandler(this.btnRegisterStudent_MouseLeave);
-            this.btnRegisterStudent.MouseHover += new System.EventHandler(this.btnRegisterStudent_MouseHover);
             // 
-            // panel7
+            // barBlueHome
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(15, 60);
-            this.panel7.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(305, 60);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "REGISTRAR ALUMNO";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.btnRegisterStudent_Click);
-            this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
-            this.label1.MouseHover += new System.EventHandler(this.label1_MouseHover);
+            this.barBlueHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.barBlueHome.Location = new System.Drawing.Point(0, 232);
+            this.barBlueHome.Name = "barBlueHome";
+            this.barBlueHome.Size = new System.Drawing.Size(15, 60);
+            this.barBlueHome.TabIndex = 7;
+            this.barBlueHome.Visible = false;
             // 
             // btnHome
             // 
-            this.btnHome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(44)))));
-            this.btnHome.Controls.Add(this.panel5);
-            this.btnHome.Controls.Add(this.labelHome);
             this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnHome.Location = new System.Drawing.Point(0, 234);
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.Location = new System.Drawing.Point(0, 233);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(305, 60);
-            this.btnHome.TabIndex = 1;
+            this.btnHome.TabIndex = 6;
+            this.btnHome.Text = "INICIO";
+            this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
-            this.btnHome.MouseLeave += new System.EventHandler(this.btnHome_MouseLeave);
-            this.btnHome.MouseHover += new System.EventHandler(this.btnHome_MouseHover);
             // 
-            // panel5
+            // barBlueConfiguration
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(15, 60);
-            this.panel5.TabIndex = 1;
+            this.barBlueConfiguration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.barBlueConfiguration.Location = new System.Drawing.Point(0, 460);
+            this.barBlueConfiguration.Name = "barBlueConfiguration";
+            this.barBlueConfiguration.Size = new System.Drawing.Size(15, 60);
+            this.barBlueConfiguration.TabIndex = 5;
+            this.barBlueConfiguration.Visible = false;
             // 
-            // labelHome
+            // btnConfiguration
             // 
-            this.labelHome.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelHome.ForeColor = System.Drawing.Color.White;
-            this.labelHome.Location = new System.Drawing.Point(0, 0);
-            this.labelHome.Name = "labelHome";
-            this.labelHome.Size = new System.Drawing.Size(305, 60);
-            this.labelHome.TabIndex = 0;
-            this.labelHome.Text = "INICIO";
-            this.labelHome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelHome.Click += new System.EventHandler(this.btnHome_Click);
-            this.labelHome.MouseLeave += new System.EventHandler(this.btnHome_MouseLeave);
-            this.labelHome.MouseHover += new System.EventHandler(this.btnHome_MouseHover);
+            this.btnConfiguration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(44)))));
+            this.btnConfiguration.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfiguration.FlatAppearance.BorderSize = 0;
+            this.btnConfiguration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfiguration.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnConfiguration.ForeColor = System.Drawing.Color.White;
+            this.btnConfiguration.Location = new System.Drawing.Point(0, 460);
+            this.btnConfiguration.Name = "btnConfiguration";
+            this.btnConfiguration.Size = new System.Drawing.Size(305, 60);
+            this.btnConfiguration.TabIndex = 4;
+            this.btnConfiguration.Text = "CONFIGURACION";
+            this.btnConfiguration.UseVisualStyleBackColor = false;
             // 
             // panel3
             // 
@@ -243,10 +210,6 @@
             this.Text = "Dojang";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DojangForm_FormClosed);
             this.panel1.ResumeLayout(false);
-            this.btnConfiguration.ResumeLayout(false);
-            this.btnDataGrid.ResumeLayout(false);
-            this.btnRegisterStudent.ResumeLayout(false);
-            this.btnHome.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -254,19 +217,16 @@
         #endregion
 
         private Panel panel1;
-        private Panel btnConfiguration;
-        private Panel panel11;
-        private Label label3;
-        private Panel btnDataGrid;
-        private Panel panel9;
-        private Label label2;
-        private Panel btnRegisterStudent;
-        private Panel panel7;
-        private Label label1;
-        private Panel btnHome;
-        private Panel panel5;
-        private Label labelHome;
         private Panel panel3;
         private Panel mainContainer;
+        private Panel barBlueConfiguration;
+        private Button btnConfiguration;
+        private Panel barBlueHome;
+        private Button btnHome;
+        private Button btnExit;
+        private Panel barBlueStudents;
+        private Button btnDataGrid;
+        private Panel barBlueRegisterStudent;
+        private Button btnRegisterStudent;
     }
 }

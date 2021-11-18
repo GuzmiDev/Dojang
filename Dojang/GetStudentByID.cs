@@ -63,8 +63,7 @@ namespace Dojang
 
         private void containerPanel_ControlRemoved(object sender, ControlEventArgs e)
         {
-
-            fh.Dispose();
+            fh.Close();
         }
     }
 }

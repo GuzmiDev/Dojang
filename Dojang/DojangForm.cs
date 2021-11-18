@@ -15,8 +15,6 @@ namespace Dojang
 {
     public partial class DojangForm : Form
     {
-        private int[] btnColorsHover = { 57, 57, 75 };
-        private int[] btnColorsLeave = { 35, 35, 44 };
         private Form fh;
         static public List<BeltEntity> Belts { get; set; }
         static public List<ScheduleEntity> Schedules{ get; set; }
@@ -58,63 +56,52 @@ namespace Dojang
             fh.Show();
         }
 
+        private void ShowPanelClick(Panel panelToShow)
+        {
+            var paneles = new Panel[] { barBlueHome, barBlueRegisterStudent, barBlueStudents, barBlueConfiguration };
+
+            foreach (var panel in paneles)
+            {
+                if(panelToShow == panel)
+                {
+                    panel.Visible = true;
+                }
+                else
+                {
+                panel.Visible = false;
+                }
+            }
+        }
         
-
-
         #region controls
         private void btnHome_Click(object sender, EventArgs e)
         {
+            //ShowPanelClick(barBlueHome);
+            barBlueStudents.Visible = false;
+            barBlueHome.Visible = true;
+            barBlueRegisterStudent.Visible = false;
+            barBlueConfiguration.Visible = false;
             OpenChildForm(new GetStudentByID());
-        }
-        private void btnHome_MouseHover(object sender, EventArgs e)
-        {
-            btnHome.BackColor = Color.FromArgb(btnColorsHover[0], btnColorsHover[1], btnColorsHover[2]);
-        }
-
-        private void btnHome_MouseLeave(object sender, EventArgs e)
-        {
-            btnHome.BackColor = Color.FromArgb(btnColorsLeave[0], btnColorsLeave[1], btnColorsLeave[2]);
-
-        }
-
-        private void btnRegisterStudent_MouseHover(object sender, EventArgs e)
-        {
-            btnRegisterStudent.BackColor = Color.FromArgb(btnColorsHover[0], btnColorsHover[1], btnColorsHover[2]);
-
-        }
-
-        private void btnRegisterStudent_MouseLeave(object sender, EventArgs e)
-        {
-            btnRegisterStudent.BackColor = Color.FromArgb(btnColorsLeave[0], btnColorsLeave[1], btnColorsLeave[2]);
-
-        }
-
-        private void label1_MouseHover(object sender, EventArgs e)
-        {
-            btnRegisterStudent.BackColor = Color.FromArgb(btnColorsHover[0], btnColorsHover[1], btnColorsHover[2]);
-
-        }
-
-        private void label1_MouseLeave(object sender, EventArgs e)
-        {
-            btnRegisterStudent.BackColor = Color.FromArgb(btnColorsLeave[0], btnColorsLeave[1], btnColorsLeave[2]);
-
         }
 
         private void btnRegisterStudent_Click(object sender, EventArgs e)
         {
+            //ShowPanelClick(barBlueRegisterStudent);
+            barBlueStudents.Visible = false;
+            barBlueHome.Visible = false;
+            barBlueRegisterStudent.Visible = true ;
+            barBlueConfiguration.Visible = false;
             OpenChildForm(new StudentRegister());
         }
-        #endregion
-
         private void DojangForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void btnStudentList_Click(object sender, EventArgs e)
         {
+            ShowPanelClick(barBlueStudents);
             OpenChildForm(new StudentList());
         }
 
@@ -123,5 +110,14 @@ namespace Dojang
             fh.Close();
          
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion
+
+
+        
     }
 }
