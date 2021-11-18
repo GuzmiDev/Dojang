@@ -25,6 +25,8 @@ namespace Business
                 return db.Students.ToList();
             }
         }
+
+       
         static public StudentEntity GetById(string id)
         {
             using (var db = new DojangContext())
@@ -50,6 +52,7 @@ namespace Business
                 {
                     StudentToDelete.Status = false;
                     db.Students.Update(StudentToDelete);
+                    db.SaveChanges();
                 }
             }
         }

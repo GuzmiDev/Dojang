@@ -60,6 +60,8 @@
             this.btnUpdateStudent = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnProlong = new System.Windows.Forms.Button();
+            this.btnRemoveStudent = new System.Windows.Forms.Button();
+            this.inputFilterStatus = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -455,12 +457,47 @@
             this.btnProlong.Visible = false;
             this.btnProlong.Click += new System.EventHandler(this.btnProlong_Click);
             // 
+            // btnRemoveStudent
+            // 
+            this.btnRemoveStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemoveStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnRemoveStudent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoveStudent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.btnRemoveStudent.FlatAppearance.BorderSize = 0;
+            this.btnRemoveStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveStudent.Font = new System.Drawing.Font("Roboto Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnRemoveStudent.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveStudent.Location = new System.Drawing.Point(617, 374);
+            this.btnRemoveStudent.Name = "btnRemoveStudent";
+            this.btnRemoveStudent.Size = new System.Drawing.Size(140, 23);
+            this.btnRemoveStudent.TabIndex = 31;
+            this.btnRemoveStudent.Text = "ELIMINAR";
+            this.btnRemoveStudent.UseVisualStyleBackColor = false;
+            this.btnRemoveStudent.Visible = false;
+            this.btnRemoveStudent.Click += new System.EventHandler(this.btnRemoveStudent_Click);
+            // 
+            // inputFilterStatus
+            // 
+            this.inputFilterStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.inputFilterStatus.FormattingEnabled = true;
+            this.inputFilterStatus.Items.AddRange(new object[] {
+            "TODOS",
+            "ACTIVOS",
+            "INACTIVOS"});
+            this.inputFilterStatus.Location = new System.Drawing.Point(23, 89);
+            this.inputFilterStatus.Name = "inputFilterStatus";
+            this.inputFilterStatus.Size = new System.Drawing.Size(157, 23);
+            this.inputFilterStatus.TabIndex = 32;
+            this.inputFilterStatus.SelectedIndexChanged += new System.EventHandler(this.inputFilterStatus_SelectedIndexChanged);
+            // 
             // StudentList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(64)))), ((int)(((byte)(87)))));
             this.ClientSize = new System.Drawing.Size(959, 631);
+            this.Controls.Add(this.inputFilterStatus);
+            this.Controls.Add(this.btnRemoveStudent);
             this.Controls.Add(this.btnProlong);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.btnUpdateStudent);
@@ -472,6 +509,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "StudentList";
             this.Text = "StudentList";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -520,5 +558,7 @@
         private DataGridViewTextBoxColumn Cancelation;
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnProlong;
+        private Button btnRemoveStudent;
+        private ComboBox inputFilterStatus;
     }
 }

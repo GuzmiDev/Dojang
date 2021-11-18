@@ -16,7 +16,9 @@ namespace Dojang
     public partial class StudentList : Form
     {
         private PaymentPlanEntity paymentPlanSelected;
-        private List<StudentEntity> students;
+        private List<StudentEntity> allStudents;
+        private List<StudentEntity> activeStudents;
+        private List<StudentEntity> inactiveStudents;
         private StudentEntity student;
         private int dayLefts;
         private int index;
@@ -24,7 +26,8 @@ namespace Dojang
         public StudentList()
         {
             InitializeComponent();
-            loadGridStudentList();
+            loadStudents();
+            loadGridStudentList(activeStudents);
             loadBelts(DojangForm.Belts);
             loadPaymentPlans(DojangForm.PaymentPlans);
             loadSchedules(DojangForm.Schedules);
@@ -32,10 +35,17 @@ namespace Dojang
 
 
         //Load inputs from db
-        private void loadGridStudentList()
+        private void loadStudents()
         {
-            students = B_Students.GetAll();
-            
+            this.allStudents = B_Students.GetAll();
+
+            this.activeStudents = allStudents.Where(student => student.Status == true).ToList();
+
+            this.inactiveStudents = allStudents.Where(student => student.Status == false).ToList();
+
+        }
+        private void loadGridStudentList(List<StudentEntity> students)
+        {
                 foreach (var student in students)
                 {
                     int n = dataGridStudents.Rows.Add();
@@ -120,8 +130,9 @@ namespace Dojang
 
               
                 var studentIDRow = selectedRow.Cells[0].Value.ToString();
-                var studentIndex = Int32.Parse(studentIDRow);
-                this.student = students.ElementAt(studentIndex - 1);
+
+                //TODO BUG 
+                this.student = allStudents.FirstOrDefault(student => student.StudentID == studentIDRow);
 
                 this.dayLefts = (student.CancelationDate - DateTime.Now).Days;
 
@@ -233,6 +244,46 @@ namespace Dojang
                 AlertBox.Error("Error al actualizar suscripcion");
             }
         }
+        //Remove student
+        private void removeStudent(string studentID)
+        {
+            try
+            {
+            B_Students.Delete(studentID);
+            AlertBox.SimpleMessage("Estudiante eliminado");
+
+            }
+            catch (Exception)
+            {
+                AlertBox.Error("Error al eliminar estudiante");
+            }
+        }
+        
+        //filters
+        private void filterStatus()
+        {
+            switch (inputFilterStatus.SelectedItem.ToString())
+            {
+                case "TODOS":
+                    ClearInputs();
+                    dataGridStudents.Rows.Clear();
+                    loadGridStudentList(allStudents);
+                    break;
+                case "ACTIVOS":
+                    ClearInputs();
+                    dataGridStudents.Rows.Clear();
+                    loadGridStudentList(activeStudents);
+                    break;
+                case "INACTIVOS":
+                    ClearInputs();
+                    dataGridStudents.Rows.Clear();
+                    loadGridStudentList(inactiveStudents);
+                    break;
+                default:
+                    AlertBox.Error("Selecciona un filtro!");
+                    break;
+            }
+        }
 
         //Controls
         private void dataGridStudents_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -240,6 +291,7 @@ namespace Dojang
             fillInputsFromStudent(e);
             btnUpdateStudent.Visible = true;
             btnRenew.Visible = true;
+            btnRemoveStudent.Visible = true;
 
             if(dayLefts > 0)
             {
@@ -279,21 +331,24 @@ namespace Dojang
         private void btnUpdateStudent_Click(object sender, EventArgs e)
         {
             UpdateStudent();
-            ClearInputs();
-            dataGridStudents.Rows.Clear();
-            loadGridStudentList();
+            filterStatus();
+            //ClearInputs();
+            //dataGridStudents.Rows.Clear();
+            //loadGridStudentList();
         }
         private void btnRenew_Click(object sender, EventArgs e)
         {
             renewSuscription(DojangForm.PaymentPlans.ElementAt(inputPlanStudentList.SelectedIndex));
-            dataGridStudents.Rows.Clear();
-            loadGridStudentList();
+            filterStatus();
+            //dataGridStudents.Rows.Clear();
+            //loadGridStudentList();
         }
         private void btnProlong_Click(object sender, EventArgs e)
         {
             prolongSusctiption(DojangForm.PaymentPlans.ElementAt(inputPlanStudentList.SelectedIndex));
-            dataGridStudents.Rows.Clear();
-            loadGridStudentList();
+            filterStatus();
+            //dataGridStudents.Rows.Clear();
+            //loadGridStudentList();
         }
 
         private void inputPlanStudentList_SelectedIndexChanged(object sender, EventArgs e)
@@ -302,6 +357,17 @@ namespace Dojang
                 this.paymentPlanSelected = DojangForm.PaymentPlans.ElementAt(inputPlanStudentList.SelectedIndex);
         }
 
-       
+        private void btnRemoveStudent_Click(object sender, EventArgs e)
+        {
+            removeStudent(student.StudentID);
+            filterStatus();
+            //dataGridStudents.Rows.Clear();
+            //loadGridStudentList();
+        }
+
+        private void inputFilterStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filterStatus();
+        }
     }
 }
