@@ -31,6 +31,7 @@ namespace Dojang
             loadBelts(DojangForm.Belts);
             loadPaymentPlans(DojangForm.PaymentPlans);
             loadSchedules(DojangForm.Schedules);
+            inputFilterStatus.SelectedIndex = 0;
         }
 
 
@@ -63,8 +64,6 @@ namespace Dojang
                     dataGridStudents.Rows[n].Cells[7].Value = student.CancelationDate;
 
                 }
-
-            
         }
         private void loadBelts(List<BeltEntity> Belts)
         {
@@ -131,7 +130,6 @@ namespace Dojang
               
                 var studentIDRow = selectedRow.Cells[0].Value.ToString();
 
-                //TODO BUG 
                 this.student = allStudents.FirstOrDefault(student => student.StudentID == studentIDRow);
 
                 this.dayLefts = (student.CancelationDate - DateTime.Now).Days;
@@ -143,6 +141,7 @@ namespace Dojang
                 inputScheduleStudentList.SelectedIndex = student.ScheduleID -1;
                 inputPlanStudentList.SelectedIndex = student.PaymentPlanID - 1;
                 imgPerfil.Image = ImageManipulator.ConvertByteArrayToImage(student.ImagePerfil);
+
 
             }
             catch (System.NullReferenceException)
@@ -166,6 +165,11 @@ namespace Dojang
             inputPlanStudentList.SelectedIndex = -1;
             imgPerfil.Image = null;
             panelBarCode.BackgroundImage = null;
+            btnActiveStudent.Visible = false;
+            btnRemoveStudent.Visible = false;
+            btnProlong.Visible = false;
+            btnRenew.Visible = false;
+            btnUpdateStudent.Visible = false;
         }
 
         //RENEW
@@ -258,10 +262,26 @@ namespace Dojang
                 AlertBox.Error("Error al eliminar estudiante");
             }
         }
+        //status student
+        private void activeStudent()
+        {
+            try
+            {
+                student.Status = true;
+                B_Students.Update(student);
+                AlertBox.SimpleMessage("Estudiante activado");
+
+            }
+            catch (Exception)
+            {
+                AlertBox.Error("Error al activar estudiante");
+            }
+        }
         
         //filters
         private void filterStatus()
         {
+            loadStudents();
             switch (inputFilterStatus.SelectedItem.ToString())
             {
                 case "TODOS":
@@ -291,7 +311,18 @@ namespace Dojang
             fillInputsFromStudent(e);
             btnUpdateStudent.Visible = true;
             btnRenew.Visible = true;
+            if (student.Status)
+            {
             btnRemoveStudent.Visible = true;
+            btnActiveStudent.Visible = false;
+
+            }
+            else
+            {
+                btnActiveStudent.Visible = true;
+                btnRemoveStudent.Visible = false;
+            }
+            
 
             if(dayLefts > 0)
             {
@@ -368,6 +399,13 @@ namespace Dojang
         private void inputFilterStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             filterStatus();
+        }
+
+        private void btnActiveStudent_Click(object sender, EventArgs e)
+        {
+            activeStudent();
+            filterStatus();
+
         }
     }
 }

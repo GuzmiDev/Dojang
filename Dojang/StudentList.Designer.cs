@@ -62,6 +62,7 @@
             this.btnProlong = new System.Windows.Forms.Button();
             this.btnRemoveStudent = new System.Windows.Forms.Button();
             this.inputFilterStatus = new System.Windows.Forms.ComboBox();
+            this.btnActiveStudent = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgPerfil)).BeginInit();
@@ -490,12 +491,32 @@
             this.inputFilterStatus.TabIndex = 32;
             this.inputFilterStatus.SelectedIndexChanged += new System.EventHandler(this.inputFilterStatus_SelectedIndexChanged);
             // 
+            // btnActiveStudent
+            // 
+            this.btnActiveStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActiveStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.btnActiveStudent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActiveStudent.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.btnActiveStudent.FlatAppearance.BorderSize = 0;
+            this.btnActiveStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActiveStudent.Font = new System.Drawing.Font("Roboto Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnActiveStudent.ForeColor = System.Drawing.Color.White;
+            this.btnActiveStudent.Location = new System.Drawing.Point(617, 374);
+            this.btnActiveStudent.Name = "btnActiveStudent";
+            this.btnActiveStudent.Size = new System.Drawing.Size(140, 23);
+            this.btnActiveStudent.TabIndex = 33;
+            this.btnActiveStudent.Text = "ACTIVAR";
+            this.btnActiveStudent.UseVisualStyleBackColor = false;
+            this.btnActiveStudent.Visible = false;
+            this.btnActiveStudent.Click += new System.EventHandler(this.btnActiveStudent_Click);
+            // 
             // StudentList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(64)))), ((int)(((byte)(87)))));
             this.ClientSize = new System.Drawing.Size(959, 631);
+            this.Controls.Add(this.btnActiveStudent);
             this.Controls.Add(this.inputFilterStatus);
             this.Controls.Add(this.btnRemoveStudent);
             this.Controls.Add(this.btnProlong);
@@ -560,5 +581,6 @@
         private Button btnProlong;
         private Button btnRemoveStudent;
         private ComboBox inputFilterStatus;
+        private Button btnActiveStudent;
     }
 }
