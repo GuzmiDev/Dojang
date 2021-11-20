@@ -103,6 +103,16 @@ namespace Dojang.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_check_mark_51 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-check-mark-51", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_error_8 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr-error-8", resourceCulture);

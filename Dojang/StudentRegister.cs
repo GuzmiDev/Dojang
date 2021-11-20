@@ -74,9 +74,19 @@ namespace Dojang
         {
             student = new StudentEntity();
             student.StudentID = studentNumber;
-            student.Name = inputName.Text;
-            student.LastName = inputLastName.Text;
+            student.Name = inputName.Text.ToTitleCase();
+            student.LastName = inputLastName.Text.ToTitleCase();
             student.Phone = inputPhone.Text;
+            student.Age = Int32.Parse(inputAge.Text);
+
+            if (radioGenderMale.Checked)
+            {
+                student.Gender = Gender.MALE;
+            }
+            else
+            {
+                student.Gender = Gender.FEMALE;
+            }
 
 
             if(inputPaymentPlan.SelectedIndex == 0)
@@ -115,7 +125,7 @@ namespace Dojang
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if(inputName.Text == "" || InputBelt.Texts == "" || inputSchedule.Texts == "" || inputPaymentPlan.Texts == "")
+            if (inputName.Text == "" || InputBelt.Texts == "" || inputSchedule.Texts == "" || inputPaymentPlan.Texts == "" || inputAge.Text == "" || (radioGenderFemale.Checked == false && radioGenderMale.Checked == false))
             {
                 MessageBox.Show("Rellene los campos obligarorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -136,7 +146,11 @@ namespace Dojang
             InputBelt.Texts = "";
             inputSchedule.Texts = "";
             inputPaymentPlan.Texts = "";
+            inputAge.Text = "";
+            radioGenderFemale.Checked = false;
+            radioGenderMale.Checked = false;
             panelBarCode.BackgroundImage = null;
+
 
         }
         private void registerPayment()

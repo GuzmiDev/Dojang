@@ -19,7 +19,9 @@ namespace Dojang
         private List<StudentEntity> allStudents;
         private List<StudentEntity> activeStudents;
         private List<StudentEntity> inactiveStudents;
+        private List<StudentEntity> filterStudents;
         private StudentEntity student;
+
         private int dayLefts;
         private int index;
 
@@ -59,9 +61,21 @@ namespace Dojang
                     dataGridStudents.Rows[n].Cells[2].Value = student.LastName;
                     dataGridStudents.Rows[n].Cells[3].Value = student.Belt.BeltName;
                     dataGridStudents.Rows[n].Cells[4].Value = student.Schedule.Schedule;
-                    dataGridStudents.Rows[n].Cells[5].Value = student.PaymentPlan.Name;
-                    dataGridStudents.Rows[n].Cells[6].Value = student.Phone;
-                    dataGridStudents.Rows[n].Cells[7].Value = student.CancelationDate;
+                    dataGridStudents.Rows[n].Cells[5].Value = student.Age;
+
+                    if(student.Gender == Gender.MALE)
+                    {
+                    dataGridStudents.Rows[n].Cells[6].Value = "Hombre";
+                    }
+                    else
+                    {
+                    dataGridStudents.Rows[n].Cells[6].Value = "Mujer";
+                    }
+
+
+                dataGridStudents.Rows[n].Cells[7].Value = student.PaymentPlan.Name;
+                    dataGridStudents.Rows[n].Cells[8].Value = student.Phone;
+                    dataGridStudents.Rows[n].Cells[9].Value = student.CancelationDate;
 
                 }
         }
@@ -91,9 +105,20 @@ namespace Dojang
         //Update Student
         private void UpdateStudent()
         {
-            student.Name = inputNameStudentList.Text;
-            student.LastName = inputLastNameStudentList.Text;
+            student.Name = inputNameStudentList.Text.ToTitleCase();
+            student.LastName = inputLastNameStudentList.Text.ToTitleCase();
             student.Phone = inputPhoneStudentList.Text;
+            student.Age = Int32.Parse(inputAge.Text);
+
+            if (radioFemale.Checked)
+            {
+                student.Gender = Gender.FEMALE;
+            }
+            else
+            {
+                student.Gender=Gender.MALE;
+            }
+
 
             student.BeltID = inputBeltStudentList.SelectedIndex + 1;
             student.Belt = DojangForm.Belts.ElementAt(student.BeltID - 1);
@@ -137,6 +162,17 @@ namespace Dojang
                 inputNameStudentList.Text = student.Name;
                 inputLastNameStudentList.Text = student.LastName;
                 inputPhoneStudentList.Text = student.Phone;
+                inputAge.Text = student.Age.ToString();
+
+                if(student.Gender == Gender.MALE)
+                {
+                    radioMale.Checked = true;
+                }
+                else
+                {
+                    radioFemale.Checked = true;
+                }
+
                 inputBeltStudentList.SelectedIndex = student.BeltID - 1;
                 inputScheduleStudentList.SelectedIndex = student.ScheduleID -1;
                 inputPlanStudentList.SelectedIndex = student.PaymentPlanID - 1;
@@ -160,9 +196,13 @@ namespace Dojang
             inputNameStudentList.Text = "";
             inputLastNameStudentList.Text = "";
             inputPhoneStudentList.Text = "";
+            inputAge.Text = "";
             inputBeltStudentList.SelectedIndex = -1;
             inputScheduleStudentList.SelectedIndex = -1;
             inputPlanStudentList.SelectedIndex = -1;
+            radioFemale.Checked = false;
+            radioMale.Checked = false;
+
             imgPerfil.Image = null;
             panelBarCode.BackgroundImage = null;
             btnActiveStudent.Visible = false;
@@ -170,6 +210,7 @@ namespace Dojang
             btnProlong.Visible = false;
             btnRenew.Visible = false;
             btnUpdateStudent.Visible = false;
+            
         }
 
         //RENEW
@@ -305,32 +346,52 @@ namespace Dojang
             }
         }
 
+        private List<StudentEntity> searchStudentWithName(string name)
+        {
+            return allStudents.Where(student => student.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
+
+
+        }
+        private List<StudentEntity> searchStudentComplete(string name, string lastName)
+        {
+            return allStudents.Where(student => student.Name.Contains(name, StringComparison.OrdinalIgnoreCase) && student.LastName.Contains(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
+
+        }
+        private List<StudentEntity> searchStudentWithLastName(string lastName)
+        {
+            return allStudents.Where(student => student.LastName.Contains(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
+
+        }
+
         //Controls
         private void dataGridStudents_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             fillInputsFromStudent(e);
             btnUpdateStudent.Visible = true;
             btnRenew.Visible = true;
-            if (student.Status)
+            if(student != null)
             {
-            btnRemoveStudent.Visible = true;
-            btnActiveStudent.Visible = false;
+                if (student.Status)
+                {
+                    btnRemoveStudent.Visible = true;
+                    btnActiveStudent.Visible = false;
 
-            }
-            else
-            {
-                btnActiveStudent.Visible = true;
-                btnRemoveStudent.Visible = false;
-            }
-            
+                }
+                else
+                {
+                    btnActiveStudent.Visible = true;
+                    btnRemoveStudent.Visible = false;
+                }
 
-            if(dayLefts > 0)
-            {
-            btnProlong.Visible = true;
-            }
-            else
-            {
-                btnProlong.Visible = false;
+
+                if (dayLefts > 0)
+                {
+                    btnProlong.Visible = true;
+                }
+                else
+                {
+                    btnProlong.Visible = false;
+                }
             }
         }
 
@@ -406,6 +467,35 @@ namespace Dojang
             activeStudent();
             filterStatus();
 
+        }
+        private void inputPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if(inputFilterName.Text.Length > 0 && inputFilterLastName.Text.Length > 0)
+            {
+                filterStudents = searchStudentComplete(inputFilterName.Text, inputFilterLastName.Text);
+            }else if(inputFilterName.Text.Length > 0)
+            {
+                filterStudents = searchStudentWithName(inputFilterName.Text);
+            }else if(inputFilterLastName.Text.Length > 0)
+            {
+                filterStudents = searchStudentWithLastName(inputFilterLastName.Text);
+            }
+            else
+            {
+                AlertBox.Error("Rellene algún filtro primero");
+                return;
+            }
+            ClearInputs();
+            dataGridStudents.Rows.Clear();
+            loadGridStudentList(filterStudents);
         }
     }
 }

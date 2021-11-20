@@ -14,6 +14,8 @@ namespace Entities
         public string StudentID { get; set; }
         public string Name { get; set; }
         public string? LastName { get; set; }
+        public int Age { get; set; }
+        public Gender Gender { get; set; }
         public string? Phone { get; set; }
         public DateTime CancelationDate { get; set; }
         public bool Status { get; set; }
@@ -21,6 +23,7 @@ namespace Entities
         public byte[]? ImagePerfil { get; set; }
         [DisplayName("Image")]
         public byte[]? ImageBarCode { get; set; }
+
 
         //Relation with belts
         public int BeltID { get; set; }
@@ -34,7 +37,10 @@ namespace Entities
 
         public int PaymentPlanID { get; set; }
         public PaymentPlanEntity PaymentPlan { get; set; }
-
-
     }
+        public enum Gender
+        {
+            MALE,
+            FEMALE
+        }
 }
