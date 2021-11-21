@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.barBlueConfiguration = new System.Windows.Forms.Panel();
+            this.btnConfiguration = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.barBlueStudents = new System.Windows.Forms.Panel();
             this.btnDataGrid = new System.Windows.Forms.Button();
@@ -36,8 +38,8 @@
             this.btnRegisterStudent = new System.Windows.Forms.Button();
             this.barBlueHome = new System.Windows.Forms.Panel();
             this.btnHome = new System.Windows.Forms.Button();
-            this.barBlueConfiguration = new System.Windows.Forms.Panel();
-            this.btnConfiguration = new System.Windows.Forms.Button();
+            this.barBluePayments = new System.Windows.Forms.Panel();
+            this.btnPayments = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.mainContainer = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -46,6 +48,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(36)))));
+            this.panel1.Controls.Add(this.barBlueConfiguration);
+            this.panel1.Controls.Add(this.btnConfiguration);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.barBlueStudents);
             this.panel1.Controls.Add(this.btnDataGrid);
@@ -53,14 +57,38 @@
             this.panel1.Controls.Add(this.btnRegisterStudent);
             this.panel1.Controls.Add(this.barBlueHome);
             this.panel1.Controls.Add(this.btnHome);
-            this.panel1.Controls.Add(this.barBlueConfiguration);
-            this.panel1.Controls.Add(this.btnConfiguration);
+            this.panel1.Controls.Add(this.barBluePayments);
+            this.panel1.Controls.Add(this.btnPayments);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(305, 681);
             this.panel1.TabIndex = 0;
+            // 
+            // barBlueConfiguration
+            // 
+            this.barBlueConfiguration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.barBlueConfiguration.Location = new System.Drawing.Point(0, 493);
+            this.barBlueConfiguration.Name = "barBlueConfiguration";
+            this.barBlueConfiguration.Size = new System.Drawing.Size(15, 60);
+            this.barBlueConfiguration.TabIndex = 14;
+            this.barBlueConfiguration.Visible = false;
+            // 
+            // btnConfiguration
+            // 
+            this.btnConfiguration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(44)))));
+            this.btnConfiguration.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnConfiguration.FlatAppearance.BorderSize = 0;
+            this.btnConfiguration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfiguration.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnConfiguration.ForeColor = System.Drawing.Color.White;
+            this.btnConfiguration.Location = new System.Drawing.Point(0, 493);
+            this.btnConfiguration.Name = "btnConfiguration";
+            this.btnConfiguration.Size = new System.Drawing.Size(305, 60);
+            this.btnConfiguration.TabIndex = 13;
+            this.btnConfiguration.Text = "CONFIGURACION";
+            this.btnConfiguration.UseVisualStyleBackColor = false;
             // 
             // btnExit
             // 
@@ -82,7 +110,7 @@
             // barBlueStudents
             // 
             this.barBlueStudents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
-            this.barBlueStudents.Location = new System.Drawing.Point(0, 386);
+            this.barBlueStudents.Location = new System.Drawing.Point(0, 341);
             this.barBlueStudents.Name = "barBlueStudents";
             this.barBlueStudents.Size = new System.Drawing.Size(15, 60);
             this.barBlueStudents.TabIndex = 11;
@@ -96,7 +124,7 @@
             this.btnDataGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDataGrid.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnDataGrid.ForeColor = System.Drawing.Color.White;
-            this.btnDataGrid.Location = new System.Drawing.Point(0, 386);
+            this.btnDataGrid.Location = new System.Drawing.Point(0, 341);
             this.btnDataGrid.Name = "btnDataGrid";
             this.btnDataGrid.Size = new System.Drawing.Size(305, 60);
             this.btnDataGrid.TabIndex = 10;
@@ -107,7 +135,7 @@
             // barBlueRegisterStudent
             // 
             this.barBlueRegisterStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
-            this.barBlueRegisterStudent.Location = new System.Drawing.Point(0, 310);
+            this.barBlueRegisterStudent.Location = new System.Drawing.Point(0, 265);
             this.barBlueRegisterStudent.Name = "barBlueRegisterStudent";
             this.barBlueRegisterStudent.Size = new System.Drawing.Size(15, 60);
             this.barBlueRegisterStudent.TabIndex = 9;
@@ -121,7 +149,7 @@
             this.btnRegisterStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegisterStudent.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnRegisterStudent.ForeColor = System.Drawing.Color.White;
-            this.btnRegisterStudent.Location = new System.Drawing.Point(0, 310);
+            this.btnRegisterStudent.Location = new System.Drawing.Point(0, 265);
             this.btnRegisterStudent.Name = "btnRegisterStudent";
             this.btnRegisterStudent.Size = new System.Drawing.Size(305, 60);
             this.btnRegisterStudent.TabIndex = 8;
@@ -132,7 +160,7 @@
             // barBlueHome
             // 
             this.barBlueHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
-            this.barBlueHome.Location = new System.Drawing.Point(0, 232);
+            this.barBlueHome.Location = new System.Drawing.Point(0, 187);
             this.barBlueHome.Name = "barBlueHome";
             this.barBlueHome.Size = new System.Drawing.Size(15, 60);
             this.barBlueHome.TabIndex = 7;
@@ -147,7 +175,7 @@
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnHome.ForeColor = System.Drawing.Color.White;
-            this.btnHome.Location = new System.Drawing.Point(0, 233);
+            this.btnHome.Location = new System.Drawing.Point(0, 188);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(305, 60);
             this.btnHome.TabIndex = 6;
@@ -155,29 +183,30 @@
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // barBlueConfiguration
+            // barBluePayments
             // 
-            this.barBlueConfiguration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
-            this.barBlueConfiguration.Location = new System.Drawing.Point(0, 460);
-            this.barBlueConfiguration.Name = "barBlueConfiguration";
-            this.barBlueConfiguration.Size = new System.Drawing.Size(15, 60);
-            this.barBlueConfiguration.TabIndex = 5;
-            this.barBlueConfiguration.Visible = false;
+            this.barBluePayments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
+            this.barBluePayments.Location = new System.Drawing.Point(0, 418);
+            this.barBluePayments.Name = "barBluePayments";
+            this.barBluePayments.Size = new System.Drawing.Size(15, 60);
+            this.barBluePayments.TabIndex = 5;
+            this.barBluePayments.Visible = false;
             // 
-            // btnConfiguration
+            // btnPayments
             // 
-            this.btnConfiguration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(44)))));
-            this.btnConfiguration.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConfiguration.FlatAppearance.BorderSize = 0;
-            this.btnConfiguration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfiguration.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnConfiguration.ForeColor = System.Drawing.Color.White;
-            this.btnConfiguration.Location = new System.Drawing.Point(0, 460);
-            this.btnConfiguration.Name = "btnConfiguration";
-            this.btnConfiguration.Size = new System.Drawing.Size(305, 60);
-            this.btnConfiguration.TabIndex = 4;
-            this.btnConfiguration.Text = "CONFIGURACION";
-            this.btnConfiguration.UseVisualStyleBackColor = false;
+            this.btnPayments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(44)))));
+            this.btnPayments.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPayments.FlatAppearance.BorderSize = 0;
+            this.btnPayments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayments.Font = new System.Drawing.Font("Roboto Light", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPayments.ForeColor = System.Drawing.Color.White;
+            this.btnPayments.Location = new System.Drawing.Point(0, 418);
+            this.btnPayments.Name = "btnPayments";
+            this.btnPayments.Size = new System.Drawing.Size(305, 60);
+            this.btnPayments.TabIndex = 4;
+            this.btnPayments.Text = "PAGOS";
+            this.btnPayments.UseVisualStyleBackColor = false;
+            this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
             // 
             // panel3
             // 
@@ -220,8 +249,8 @@
         private Panel panel1;
         private Panel panel3;
         private Panel mainContainer;
-        private Panel barBlueConfiguration;
-        private Button btnConfiguration;
+        private Panel barBluePayments;
+        private Button btnPayments;
         private Panel barBlueHome;
         private Button btnHome;
         private Button btnExit;
@@ -229,5 +258,7 @@
         private Button btnDataGrid;
         private Panel barBlueRegisterStudent;
         private Button btnRegisterStudent;
+        private Panel barBlueConfiguration;
+        private Button btnConfiguration;
     }
 }

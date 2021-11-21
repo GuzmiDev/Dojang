@@ -58,7 +58,7 @@ namespace Dojang
 
         private void ShowPanelClick(Panel panelToShow)
         {
-            var paneles = new Panel[] { barBlueHome, barBlueRegisterStudent, barBlueStudents, barBlueConfiguration };
+            var paneles = new Panel[] { barBlueHome, barBlueRegisterStudent, barBlueStudents, barBluePayments };
 
             foreach (var panel in paneles)
             {
@@ -80,7 +80,7 @@ namespace Dojang
             barBlueStudents.Visible = false;
             barBlueHome.Visible = true;
             barBlueRegisterStudent.Visible = false;
-            barBlueConfiguration.Visible = false;
+            barBluePayments.Visible = false;
             OpenChildForm(new GetStudentByID());
         }
 
@@ -90,7 +90,7 @@ namespace Dojang
             barBlueStudents.Visible = false;
             barBlueHome.Visible = false;
             barBlueRegisterStudent.Visible = true ;
-            barBlueConfiguration.Visible = false;
+            barBluePayments.Visible = false;
             OpenChildForm(new StudentRegister());
         }
         private void DojangForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -115,9 +115,14 @@ namespace Dojang
         {
             Application.Exit();
         }
+
+
         #endregion
 
-
-        
+        private void btnPayments_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Payments());
+            ShowPanelClick(barBluePayments);
+        }
     }
 }
