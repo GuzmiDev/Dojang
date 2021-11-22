@@ -58,7 +58,7 @@ namespace Dojang
 
         private void ShowPanelClick(Panel panelToShow)
         {
-            var paneles = new Panel[] { barBlueHome, barBlueRegisterStudent, barBlueStudents, barBluePayments };
+            var paneles = new Panel[] { barBlueHome, barBlueRegisterStudent, barBlueStudents, barBluePayments, barBlueConfiguration };
 
             foreach (var panel in paneles)
             {
@@ -74,55 +74,46 @@ namespace Dojang
         }
         
         #region controls
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            //ShowPanelClick(barBlueHome);
-            barBlueStudents.Visible = false;
-            barBlueHome.Visible = true;
-            barBlueRegisterStudent.Visible = false;
-            barBluePayments.Visible = false;
-            OpenChildForm(new GetStudentByID());
-        }
-
-        private void btnRegisterStudent_Click(object sender, EventArgs e)
-        {
-            //ShowPanelClick(barBlueRegisterStudent);
-            barBlueStudents.Visible = false;
-            barBlueHome.Visible = false;
-            barBlueRegisterStudent.Visible = true ;
-            barBluePayments.Visible = false;
-            OpenChildForm(new StudentRegister());
-        }
         private void DojangForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
 
         }
-
-        private void btnStudentList_Click(object sender, EventArgs e)
-        {
-            ShowPanelClick(barBlueStudents);
-            OpenChildForm(new StudentList());
-        }
-
         private void mainContainer_ControlRemoved(object sender, ControlEventArgs e)
         {
             fh.Close();
          
         }
-
-        private void btnExit_Click(object sender, EventArgs e)
+        private void btnHome_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            ShowPanelClick(barBlueHome);
+            OpenChildForm(new GetStudentByID());
         }
-
-
-        #endregion
-
+        private void btnRegisterStudent_Click(object sender, EventArgs e)
+        {
+            ShowPanelClick(barBlueRegisterStudent);
+            OpenChildForm(new StudentRegister());
+        }
+        private void btnStudentList_Click(object sender, EventArgs e)
+        {
+            ShowPanelClick(barBlueStudents);
+            OpenChildForm(new StudentList());
+        }
         private void btnPayments_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Payments());
             ShowPanelClick(barBluePayments);
         }
+        private void btnConfiguration_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Configuration());
+            ShowPanelClick(barBlueConfiguration);
+        }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        #endregion
+
     }
 }

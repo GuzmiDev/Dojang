@@ -89,6 +89,7 @@
             this.btnConfiguration.TabIndex = 13;
             this.btnConfiguration.Text = "CONFIGURACION";
             this.btnConfiguration.UseVisualStyleBackColor = false;
+            this.btnConfiguration.Click += new System.EventHandler(this.btnConfiguration_Click);
             // 
             // btnExit
             // 
