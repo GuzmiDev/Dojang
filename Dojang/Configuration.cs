@@ -84,6 +84,7 @@ namespace Dojang
                 student.CancelationDate = student.CancelationDate.AddDays(days);
                 B_Students.Update(student);
             }
+            AlertBox.SimpleMessage("Se añadieron correctamente!");
         }
 
 
