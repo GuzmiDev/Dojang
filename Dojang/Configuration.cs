@@ -78,7 +78,7 @@ namespace Dojang
         private void addDaysToStudents()
         {
             var days = Int32.Parse(inputAddDays.Text);
-            var students = B_Students.GetAll().Where(student => student.Status == true);
+            var students = B_Students.GetAll().Where(student => student.Status);
             foreach (var student in students)
             {
                 student.CancelationDate = student.CancelationDate.AddDays(days);

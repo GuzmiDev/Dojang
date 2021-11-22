@@ -44,8 +44,6 @@ namespace DataAccess
             modelBuilder.Entity<LogStudentsEntity>()
                 .Property(b => b.Status)
                 .HasDefaultValue(true);
-
-
         }
 
     }

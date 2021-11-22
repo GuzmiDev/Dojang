@@ -60,6 +60,7 @@
             this.Plan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoneColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cancelation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Suscription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imgPerfil = new WinFormsApp1.Controls.CircularPictureBox();
             this.btnSaveBarCode = new System.Windows.Forms.Button();
             this.panelContainerBarCode = new System.Windows.Forms.Panel();
@@ -387,7 +388,8 @@
             this.GenderColumn,
             this.Plan,
             this.PhoneColumn,
-            this.Cancelation});
+            this.Cancelation,
+            this.Suscription});
             this.dataGridStudents.EnableHeadersVisualStyles = false;
             this.dataGridStudents.GridColor = System.Drawing.Color.SteelBlue;
             this.dataGridStudents.Location = new System.Drawing.Point(23, 118);
@@ -462,6 +464,12 @@
             this.Cancelation.HeaderText = "Cancelación";
             this.Cancelation.Name = "Cancelation";
             this.Cancelation.ReadOnly = true;
+            // 
+            // Suscription
+            // 
+            this.Suscription.HeaderText = "Suscripción";
+            this.Suscription.Name = "Suscription";
+            this.Suscription.ReadOnly = true;
             // 
             // imgPerfil
             // 
@@ -839,5 +847,6 @@
         private Label label11;
         private TextBox inputFilterLastName;
         private Button btnSearch;
+        private DataGridViewTextBoxColumn Suscription;
     }
 }

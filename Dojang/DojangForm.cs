@@ -15,7 +15,10 @@ namespace Dojang
 {
     public partial class DojangForm : Form
     {
-        private Form fh;
+       private Form fh;
+        static public List<StudentEntity> allStudents;
+        static public List<StudentEntity> activeStudents;
+        static public List<StudentEntity> inactiveStudents;
         static public List<BeltEntity> Belts { get; set; }
         static public List<ScheduleEntity> Schedules{ get; set; }
         static public List<PaymentPlanEntity> PaymentPlans { get; set; }
@@ -23,12 +26,42 @@ namespace Dojang
         public DojangForm()
         {
             InitializeComponent();
+            loadStudents();
+            checkSuscriptionOfStudents();
             loadBelts();
             loadSchedules();
             loadPaymentPlans();
         }
 
         //Load DB
+        static public void loadStudents()
+        {
+            allStudents = B_Students.GetAll().Where(student => student.Status).ToList();
+        }
+
+        static public void checkSuscriptionOfStudents()
+        {
+            var date = DateTime.Today;
+            foreach (var student in allStudents)
+            {
+                var daysLefts = (student.CancelationDate - date).Days;
+                if (daysLefts <= 0)
+                {
+                    student.Suscription = false;
+                    B_Students.Update(student);
+                }
+                else
+                {
+                    student.Suscription = true;
+                    B_Students.Update(student);
+                }
+
+            }
+
+            activeStudents = allStudents.Where(student => student.Suscription).ToList();
+            inactiveStudents = allStudents.Where(student => !student.Suscription).ToList();
+
+        }
         private void loadPaymentPlans()
         {
             PaymentPlans = B_PaymentPlan.GetAll();

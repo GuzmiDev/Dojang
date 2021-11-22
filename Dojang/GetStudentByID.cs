@@ -34,7 +34,7 @@ namespace Dojang
             {
                 studentCode = inputCode.Text;
                 Student = B_Students.GetById(studentCode);
-                if (Student == null)
+                if (Student == null || !Student.Status)
                 {
                     AlertBox.Error("No existe estuidante con este ID");
                 }

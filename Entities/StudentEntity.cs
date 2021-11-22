@@ -17,6 +17,7 @@ namespace Entities
         public int Age { get; set; }
         public Gender Gender { get; set; }
         public string? Phone { get; set; }
+        public bool Suscription { get; set; }
         public DateTime CancelationDate { get; set; }
         public bool Status { get; set; }
         [DisplayName("Image")]

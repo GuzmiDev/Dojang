@@ -78,6 +78,7 @@ namespace Dojang
             student.LastName = inputLastName.Text.ToTitleCase();
             student.Phone = inputPhone.Text;
             student.Age = Int32.Parse(inputAge.Text);
+            student.Suscription = true;
 
             if (radioGenderMale.Checked)
             {

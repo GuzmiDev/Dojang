@@ -24,7 +24,6 @@ namespace Dojang
         {
             InitializeComponent();
             showStudent();
-            
         }
 
         private Image ConvertByteArrayToImage(byte[] data)

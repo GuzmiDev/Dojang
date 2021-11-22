@@ -16,9 +16,6 @@ namespace Dojang
     public partial class StudentList : Form
     {
         private PaymentPlanEntity paymentPlanSelected;
-        private List<StudentEntity> allStudents;
-        private List<StudentEntity> activeStudents;
-        private List<StudentEntity> inactiveStudents;
         private List<StudentEntity> filterStudents;
         private StudentEntity student;
 
@@ -28,8 +25,7 @@ namespace Dojang
         public StudentList()
         {
             InitializeComponent();
-            loadStudents();
-            loadGridStudentList(activeStudents);
+            loadGridStudentList(DojangForm.activeStudents);
             loadBelts(DojangForm.Belts);
             loadPaymentPlans(DojangForm.PaymentPlans);
             loadSchedules(DojangForm.Schedules);
@@ -38,15 +34,7 @@ namespace Dojang
 
 
         //Load inputs from db
-        private void loadStudents()
-        {
-            this.allStudents = B_Students.GetAll();
-
-            this.activeStudents = allStudents.Where(student => student.Status == true).ToList();
-
-            this.inactiveStudents = allStudents.Where(student => student.Status == false).ToList();
-
-        }
+        
         private void loadGridStudentList(List<StudentEntity> students)
         {
                 foreach (var student in students)
@@ -65,19 +53,29 @@ namespace Dojang
 
                     if(student.Gender == Gender.MALE)
                     {
-                    dataGridStudents.Rows[n].Cells[6].Value = "Hombre";
+                        dataGridStudents.Rows[n].Cells[6].Value = "Hombre";
                     }
                     else
                     {
-                    dataGridStudents.Rows[n].Cells[6].Value = "Mujer";
+                         dataGridStudents.Rows[n].Cells[6].Value = "Mujer";
                     }
 
 
-                dataGridStudents.Rows[n].Cells[7].Value = student.PaymentPlan.Name;
+                    dataGridStudents.Rows[n].Cells[7].Value = student.PaymentPlan.Name;
                     dataGridStudents.Rows[n].Cells[8].Value = student.Phone;
                     dataGridStudents.Rows[n].Cells[9].Value = student.CancelationDate;
 
-                }
+                    if (student.Suscription)
+                    {
+                        dataGridStudents.Rows[n].Cells[10].Value = "Activa";
+                    }
+                    else
+                    {
+                        dataGridStudents.Rows[n].Cells[10].Value = "Inactiva";
+
+                    }
+
+            }
         }
         private void loadBelts(List<BeltEntity> Belts)
         {
@@ -155,7 +153,7 @@ namespace Dojang
               
                 var studentIDRow = selectedRow.Cells[0].Value.ToString();
 
-                this.student = allStudents.FirstOrDefault(student => student.StudentID == studentIDRow);
+                this.student = DojangForm.allStudents.FirstOrDefault(student => student.StudentID == studentIDRow);
 
                 this.dayLefts = (student.CancelationDate - DateTime.Now).Days;
 
@@ -322,23 +320,24 @@ namespace Dojang
         //filters
         private void filterStatus()
         {
-            loadStudents();
+            DojangForm.loadStudents();
+            DojangForm.checkSuscriptionOfStudents();
             switch (inputFilterStatus.SelectedItem.ToString())
             {
                 case "TODOS":
                     ClearInputs();
                     dataGridStudents.Rows.Clear();
-                    loadGridStudentList(allStudents);
+                    loadGridStudentList(DojangForm.allStudents);
                     break;
                 case "ACTIVOS":
                     ClearInputs();
                     dataGridStudents.Rows.Clear();
-                    loadGridStudentList(activeStudents);
+                    loadGridStudentList(DojangForm.activeStudents);
                     break;
                 case "INACTIVOS":
                     ClearInputs();
                     dataGridStudents.Rows.Clear();
-                    loadGridStudentList(inactiveStudents);
+                    loadGridStudentList(DojangForm.inactiveStudents);
                     break;
                 default:
                     AlertBox.Error("Selecciona un filtro!");
@@ -348,18 +347,18 @@ namespace Dojang
 
         private List<StudentEntity> searchStudentWithName(string name)
         {
-            return allStudents.Where(student => student.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
+            return DojangForm.allStudents.Where(student => student.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
 
 
         }
         private List<StudentEntity> searchStudentComplete(string name, string lastName)
         {
-            return allStudents.Where(student => student.Name.Contains(name, StringComparison.OrdinalIgnoreCase) && student.LastName.Contains(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
+            return DojangForm.allStudents.Where(student => student.Name.Contains(name, StringComparison.OrdinalIgnoreCase) && student.LastName.Contains(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
 
         }
         private List<StudentEntity> searchStudentWithLastName(string lastName)
         {
-            return allStudents.Where(student => student.LastName.Contains(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
+            return DojangForm.allStudents.Where(student => student.LastName.Contains(lastName, StringComparison.OrdinalIgnoreCase)).ToList();
 
         }
 
@@ -411,36 +410,27 @@ namespace Dojang
         private void inputNameStudentList_TextChanged(object sender, EventArgs e)
         {
             BarCodeGenerator.generateBarCode(panelBarCode, nameStudentBarCode, student.StudentID, inputNameStudentList.Text + " " + inputLastNameStudentList.Text);
-
         }
 
         private void inputLastNameStudentList_TextChanged(object sender, EventArgs e)
         {
             BarCodeGenerator.generateBarCode(panelBarCode, nameStudentBarCode, student.StudentID, inputNameStudentList.Text + " " + inputLastNameStudentList.Text);
-
         }
 
         private void btnUpdateStudent_Click(object sender, EventArgs e)
         {
             UpdateStudent();
             filterStatus();
-            //ClearInputs();
-            //dataGridStudents.Rows.Clear();
-            //loadGridStudentList();
         }
         private void btnRenew_Click(object sender, EventArgs e)
         {
             renewSuscription(DojangForm.PaymentPlans.ElementAt(inputPlanStudentList.SelectedIndex));
             filterStatus();
-            //dataGridStudents.Rows.Clear();
-            //loadGridStudentList();
         }
         private void btnProlong_Click(object sender, EventArgs e)
         {
             prolongSusctiption(DojangForm.PaymentPlans.ElementAt(inputPlanStudentList.SelectedIndex));
             filterStatus();
-            //dataGridStudents.Rows.Clear();
-            //loadGridStudentList();
         }
 
         private void inputPlanStudentList_SelectedIndexChanged(object sender, EventArgs e)
@@ -453,8 +443,6 @@ namespace Dojang
         {
             removeStudent(student.StudentID);
             filterStatus();
-            //dataGridStudents.Rows.Clear();
-            //loadGridStudentList();
         }
 
         private void inputFilterStatus_SelectedIndexChanged(object sender, EventArgs e)
