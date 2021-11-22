@@ -33,8 +33,8 @@ namespace Dojang
                 payment.Student = B_Students.GetById(payment.StudentID);
 
                 dataGridPayments.Rows[n].Cells[0].Value = payment.PaymentID;
-                dataGridPayments.Rows[n].Cells[1].Value = payment.StudentID;
-                dataGridPayments.Rows[n].Cells[2].Value = payment.Student.Name + " " + payment.Student.LastName;
+                dataGridPayments.Rows[n].Cells[1].Value = payment.Student.Name + " " + payment.Student.LastName;
+                dataGridPayments.Rows[n].Cells[2].Value = payment.PaymentPlanInTheMoment;
 
                 if(payment.TypeOfTransaction == typeOfTransaction.Suscription)
                 {
