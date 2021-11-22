@@ -96,6 +96,7 @@
             this.inputPricePlan.Size = new System.Drawing.Size(116, 23);
             this.inputPricePlan.TabIndex = 6;
             this.inputPricePlan.TextChanged += new System.EventHandler(this.inputPricePlan_TextChanged);
+            this.inputPricePlan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputPricePlan_KeyPress);
             // 
             // btnSavePrice
             // 
@@ -147,6 +148,7 @@
             this.inputAddDays.Size = new System.Drawing.Size(138, 23);
             this.inputAddDays.TabIndex = 32;
             this.inputAddDays.TextChanged += new System.EventHandler(this.inputAddDays_TextChanged);
+            this.inputAddDays.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputPricePlan_KeyPress);
             // 
             // btnAddDays
             // 
