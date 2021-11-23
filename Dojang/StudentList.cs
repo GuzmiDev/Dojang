@@ -21,7 +21,6 @@ namespace Dojang
 
         private int dayLefts;
         private int index;
-
         public StudentList()
         {
             InitializeComponent();

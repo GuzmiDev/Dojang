@@ -67,9 +67,9 @@ namespace Dojang
             PaymentPlans = B_PaymentPlan.GetAll();
         }
 
-        private void loadSchedules()
+        static public void loadSchedules()
         {
-            Schedules = B_Schedule.GetAll();
+            Schedules = B_Schedule.GetAll().Where(schedule => schedule.Status).ToList();
         }
 
         private void loadBelts()

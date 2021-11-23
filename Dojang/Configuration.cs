@@ -21,6 +21,7 @@ namespace Dojang
         {
             InitializeComponent();
             loadPaymentPlans(DojangForm.PaymentPlans);
+            loadSchedules(DojangForm.Schedules);
         }
 
         private void loadPaymentPlans(List<PaymentPlanEntity> paymentPlans)
@@ -30,6 +31,14 @@ namespace Dojang
                 inputBoxPlans.Items.Add(paymentPlan.Name);
             }
         }
+        private void loadSchedules(List<ScheduleEntity> scheduleEntities)
+        {
+            foreach (var schedule in scheduleEntities)
+            {
+                inputSchedules.Items.Add(schedule.Schedule);
+            }
+        }
+
         private void loadTextInputPricePlan()
         {
             this.planSelected = DojangForm.PaymentPlans.FirstOrDefault(plan => plan.Name == inputBoxPlans.SelectedItem.ToString());

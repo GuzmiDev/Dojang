@@ -73,5 +73,10 @@ namespace Dojang
             generateTotalPrice();
 
         }
+
+        private void Payments_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
