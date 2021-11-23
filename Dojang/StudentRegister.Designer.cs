@@ -114,7 +114,7 @@
             this.inputPaymentPlan.Name = "inputPaymentPlan";
             this.inputPaymentPlan.Padding = new System.Windows.Forms.Padding(1);
             this.inputPaymentPlan.Size = new System.Drawing.Size(239, 30);
-            this.inputPaymentPlan.TabIndex = 90;
+            this.inputPaymentPlan.TabIndex = 8;
             this.inputPaymentPlan.Texts = "";
             // 
             // label3
@@ -150,7 +150,7 @@
             this.button1.Location = new System.Drawing.Point(376, 603);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(225, 50);
-            this.button1.TabIndex = 87;
+            this.button1.TabIndex = 9;
             this.button1.Text = "REGISTRAR";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -243,7 +243,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(700, 152);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(228, 235);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 82;
             this.pictureBox1.TabStop = false;
             // 
@@ -307,7 +307,7 @@
             this.inputSchedule.Name = "inputSchedule";
             this.inputSchedule.Padding = new System.Windows.Forms.Padding(1);
             this.inputSchedule.Size = new System.Drawing.Size(239, 30);
-            this.inputSchedule.TabIndex = 78;
+            this.inputSchedule.TabIndex = 7;
             this.inputSchedule.Texts = "";
             // 
             // bar5
@@ -349,7 +349,7 @@
             this.InputBelt.Name = "InputBelt";
             this.InputBelt.Padding = new System.Windows.Forms.Padding(1);
             this.InputBelt.Size = new System.Drawing.Size(239, 30);
-            this.InputBelt.TabIndex = 75;
+            this.InputBelt.TabIndex = 6;
             this.InputBelt.Texts = "";
             // 
             // bar4
@@ -392,7 +392,7 @@
             this.inputPhone.Location = new System.Drawing.Point(46, 241);
             this.inputPhone.Name = "inputPhone";
             this.inputPhone.Size = new System.Drawing.Size(241, 23);
-            this.inputPhone.TabIndex = 71;
+            this.inputPhone.TabIndex = 2;
             this.inputPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputPhone_KeyPress);
             // 
             // labelPhone
@@ -426,7 +426,7 @@
             this.inputLastName.Location = new System.Drawing.Point(333, 127);
             this.inputLastName.Name = "inputLastName";
             this.inputLastName.Size = new System.Drawing.Size(241, 23);
-            this.inputLastName.TabIndex = 68;
+            this.inputLastName.TabIndex = 1;
             this.inputLastName.TextChanged += new System.EventHandler(this.inputLastName_TextChanged);
             // 
             // labelLastName
@@ -460,7 +460,7 @@
             this.inputName.Location = new System.Drawing.Point(48, 127);
             this.inputName.Name = "inputName";
             this.inputName.Size = new System.Drawing.Size(241, 23);
-            this.inputName.TabIndex = 65;
+            this.inputName.TabIndex = 0;
             this.inputName.TextChanged += new System.EventHandler(this.inputName_TextChanged);
             // 
             // labelName
@@ -507,7 +507,7 @@
             this.inputAge.Location = new System.Drawing.Point(337, 241);
             this.inputAge.Name = "inputAge";
             this.inputAge.Size = new System.Drawing.Size(241, 23);
-            this.inputAge.TabIndex = 95;
+            this.inputAge.TabIndex = 3;
             this.inputAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.inputPhone_KeyPress);
             // 
             // label5
@@ -543,7 +543,7 @@
             this.radioGenderMale.Location = new System.Drawing.Point(48, 372);
             this.radioGenderMale.Name = "radioGenderMale";
             this.radioGenderMale.Size = new System.Drawing.Size(92, 23);
-            this.radioGenderMale.TabIndex = 98;
+            this.radioGenderMale.TabIndex = 4;
             this.radioGenderMale.TabStop = true;
             this.radioGenderMale.Text = "HOMBRE";
             this.radioGenderMale.UseVisualStyleBackColor = true;
@@ -557,7 +557,7 @@
             this.radioGenderFemale.Location = new System.Drawing.Point(146, 372);
             this.radioGenderFemale.Name = "radioGenderFemale";
             this.radioGenderFemale.Size = new System.Drawing.Size(80, 23);
-            this.radioGenderFemale.TabIndex = 99;
+            this.radioGenderFemale.TabIndex = 5;
             this.radioGenderFemale.TabStop = true;
             this.radioGenderFemale.Text = "MUJER";
             this.radioGenderFemale.UseVisualStyleBackColor = true;

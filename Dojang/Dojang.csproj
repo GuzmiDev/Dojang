@@ -6,10 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Include="bin\Debug\net6.0-windows\Assets\1630039157633.jpg" />
+    <Content Include="favicon.ico" />
   </ItemGroup>
 
   <ItemGroup>

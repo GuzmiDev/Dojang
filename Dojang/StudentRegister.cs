@@ -103,7 +103,7 @@ namespace Dojang
 
 
 
-            student.ImagePerfil = ImageManipulator.ConvertImageToBytes(pictureBox1.Image);
+            student.ImagePerfil = ImageManipulator.ConvertImageToBytes(getOnlyPictureBoxPhoto());
             student.ImageBarCode = ImageManipulator.ConvertImageToBytes(getBarcodePanelImage());
             student.BeltID = InputBelt.SelectedIndex + 1;
             student.ScheduleID = inputSchedule.SelectedIndex + 1;
@@ -247,6 +247,16 @@ namespace Dojang
 
             Bitmap bm = new Bitmap(width, height);
             panelContainerBarCode.DrawToBitmap(bm, new Rectangle(0, 0, width, height));
+            return bm;
+        }
+
+        private Bitmap getOnlyPictureBoxPhoto()
+        {
+            int width = pictureBox1.Size.Width;
+            int height = pictureBox1.Size.Height;
+
+            Bitmap bm = new Bitmap(width, height);
+            pictureBox1.DrawToBitmap(bm, new Rectangle(0, 0, width, height));
             return bm;
         }
 

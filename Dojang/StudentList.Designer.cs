@@ -483,7 +483,7 @@
             this.imgPerfil.Location = new System.Drawing.Point(747, 9);
             this.imgPerfil.Name = "imgPerfil";
             this.imgPerfil.Size = new System.Drawing.Size(87, 87);
-            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgPerfil.TabIndex = 3;
             this.imgPerfil.TabStop = false;
             // 
