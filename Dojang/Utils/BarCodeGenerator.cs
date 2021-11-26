@@ -13,7 +13,7 @@ namespace Dojang.Utils
         {
             BarcodeLib.Barcode barCode = new BarcodeLib.Barcode();
             barCode.IncludeLabel = true;
-            barcodeContainer.BackgroundImage = barCode.Encode(BarcodeLib.TYPE.CODE128, studentID, Color.Black, Color.White, 200, 50);
+            barcodeContainer.BackgroundImage = barCode.Encode(BarcodeLib.TYPE.CODE128, studentID, Color.Black, Color.White, barcodeContainer.Width, barcodeContainer.Height);
             labelUnderBarcode.Text = studentName.ToTitleCase();
         }
         static public void SaveBarcode(Panel panelContainer, Label labelUnderBarcode, string studentNumber)

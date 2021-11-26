@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,6 +22,9 @@ namespace Dojang
 
         private int dayLefts;
         private int index;
+        private string firstWord;
+        private object secondWord;
+
         public StudentList()
         {
             InitializeComponent();
@@ -204,7 +208,7 @@ namespace Dojang
                 inputPlanStudentList.SelectedIndex = student.PaymentPlanID - 1;
                 imgPerfil.Image = ImageManipulator.ConvertByteArrayToImage(student.ImagePerfil);
 
-
+                
             }
             catch (System.NullReferenceException)
             {
@@ -437,12 +441,16 @@ namespace Dojang
 
         private void inputNameStudentList_TextChanged(object sender, EventArgs e)
         {
-            BarCodeGenerator.generateBarCode(panelBarCode, nameStudentBarCode, student.StudentID, inputNameStudentList.Text + " " + inputLastNameStudentList.Text);
+            this.firstWord = Regex.Replace(inputNameStudentList.Text.Split()[0], @"[^0-9a-zA-Z\ ]+", "");
+            this.secondWord = Regex.Replace(inputLastNameStudentList.Text.Split()[0], @"[^0-9a-zA-Z\ ]+", "");
+            BarCodeGenerator.generateBarCode(panelBarCode, nameStudentBarCode, student.StudentID, this.firstWord + " " + this.secondWord);
         }
 
         private void inputLastNameStudentList_TextChanged(object sender, EventArgs e)
         {
-            BarCodeGenerator.generateBarCode(panelBarCode, nameStudentBarCode, student.StudentID, inputNameStudentList.Text + " " + inputLastNameStudentList.Text);
+            this.firstWord = Regex.Replace(inputNameStudentList.Text.Split()[0], @"[^0-9a-zA-Z\ ]+", "");
+            this.secondWord = Regex.Replace(inputLastNameStudentList.Text.Split()[0], @"[^0-9a-zA-Z\ ]+", "");
+            BarCodeGenerator.generateBarCode(panelBarCode, nameStudentBarCode, student.StudentID, this.firstWord + " " + this.secondWord);
         }
 
         private void btnUpdateStudent_Click(object sender, EventArgs e)

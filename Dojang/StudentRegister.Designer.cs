@@ -179,26 +179,27 @@
             this.panelContainerBarCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelContainerBarCode.Controls.Add(this.nameStudentBarCode);
             this.panelContainerBarCode.Controls.Add(this.panelBarCode);
-            this.panelContainerBarCode.Location = new System.Drawing.Point(714, 464);
+            this.panelContainerBarCode.Location = new System.Drawing.Point(724, 464);
             this.panelContainerBarCode.Name = "panelContainerBarCode";
-            this.panelContainerBarCode.Size = new System.Drawing.Size(200, 70);
+            this.panelContainerBarCode.Size = new System.Drawing.Size(200, 75);
             this.panelContainerBarCode.TabIndex = 85;
             // 
             // nameStudentBarCode
             // 
             this.nameStudentBarCode.AutoSize = true;
-            this.nameStudentBarCode.Font = new System.Drawing.Font("Roboto Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nameStudentBarCode.Location = new System.Drawing.Point(3, 53);
+            this.nameStudentBarCode.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.nameStudentBarCode.Location = new System.Drawing.Point(28, 4);
             this.nameStudentBarCode.Name = "nameStudentBarCode";
-            this.nameStudentBarCode.Size = new System.Drawing.Size(0, 14);
+            this.nameStudentBarCode.Size = new System.Drawing.Size(0, 18);
             this.nameStudentBarCode.TabIndex = 1;
             // 
             // panelBarCode
             // 
-            this.panelBarCode.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarCode.Location = new System.Drawing.Point(0, 0);
+            this.panelBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelBarCode.Location = new System.Drawing.Point(25, 24);
             this.panelBarCode.Name = "panelBarCode";
-            this.panelBarCode.Size = new System.Drawing.Size(198, 50);
+            this.panelBarCode.Size = new System.Drawing.Size(150, 50);
             this.panelBarCode.TabIndex = 0;
             // 
             // btnTakePicture

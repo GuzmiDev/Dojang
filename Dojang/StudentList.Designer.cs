@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.inputPhoneStudentList = new System.Windows.Forms.TextBox();
@@ -368,14 +368,14 @@
             this.dataGridStudents.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridStudents.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridStudents.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridStudents.ColumnHeadersHeight = 30;
             this.dataGridStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -513,24 +513,24 @@
             this.panelContainerBarCode.Controls.Add(this.panelBarCode);
             this.panelContainerBarCode.Location = new System.Drawing.Point(697, 513);
             this.panelContainerBarCode.Name = "panelContainerBarCode";
-            this.panelContainerBarCode.Size = new System.Drawing.Size(200, 70);
+            this.panelContainerBarCode.Size = new System.Drawing.Size(200, 75);
             this.panelContainerBarCode.TabIndex = 25;
             // 
             // nameStudentBarCode
             // 
             this.nameStudentBarCode.AutoSize = true;
-            this.nameStudentBarCode.Font = new System.Drawing.Font("Roboto Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nameStudentBarCode.Location = new System.Drawing.Point(3, 53);
+            this.nameStudentBarCode.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.nameStudentBarCode.Location = new System.Drawing.Point(28, 4);
             this.nameStudentBarCode.Name = "nameStudentBarCode";
-            this.nameStudentBarCode.Size = new System.Drawing.Size(0, 14);
+            this.nameStudentBarCode.Size = new System.Drawing.Size(0, 18);
             this.nameStudentBarCode.TabIndex = 1;
             // 
             // panelBarCode
             // 
-            this.panelBarCode.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarCode.Location = new System.Drawing.Point(0, 0);
+            this.panelBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelBarCode.Location = new System.Drawing.Point(26, 24);
             this.panelBarCode.Name = "panelBarCode";
-            this.panelBarCode.Size = new System.Drawing.Size(198, 50);
+            this.panelBarCode.Size = new System.Drawing.Size(150, 50);
             this.panelBarCode.TabIndex = 0;
             // 
             // btnRenew
