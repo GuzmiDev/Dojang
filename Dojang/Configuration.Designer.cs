@@ -40,22 +40,18 @@
             this.btnAddDays = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.inputSchedules = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDeleteSchedule = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.scheduleSecond = new System.Windows.Forms.DateTimePicker();
+            this.scheduleFirst = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -206,27 +202,29 @@
             this.inputSchedules.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.inputSchedules.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.inputSchedules.FormattingEnabled = true;
-            this.inputSchedules.Location = new System.Drawing.Point(107, 54);
+            this.inputSchedules.Location = new System.Drawing.Point(97, 54);
             this.inputSchedules.Name = "inputSchedules";
-            this.inputSchedules.Size = new System.Drawing.Size(115, 23);
+            this.inputSchedules.Size = new System.Drawing.Size(125, 23);
             this.inputSchedules.TabIndex = 35;
+            this.inputSchedules.SelectedIndexChanged += new System.EventHandler(this.inputSchedules_SelectedIndexChanged);
             // 
-            // button1
+            // btnDeleteSchedule
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Enabled = false;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Roboto Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(106, 83);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 23);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "ELIMINAR";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnDeleteSchedule.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteSchedule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnDeleteSchedule.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeleteSchedule.Enabled = false;
+            this.btnDeleteSchedule.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnDeleteSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteSchedule.Font = new System.Drawing.Font("Roboto Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteSchedule.Location = new System.Drawing.Point(97, 83);
+            this.btnDeleteSchedule.Name = "btnDeleteSchedule";
+            this.btnDeleteSchedule.Size = new System.Drawing.Size(125, 23);
+            this.btnDeleteSchedule.TabIndex = 36;
+            this.btnDeleteSchedule.Text = "ELIMINAR";
+            this.btnDeleteSchedule.UseVisualStyleBackColor = false;
+            this.btnDeleteSchedule.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -234,36 +232,12 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(13, 128);
+            this.label7.Location = new System.Drawing.Point(3, 128);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(154, 19);
             this.label7.TabIndex = 37;
             this.label7.Text = "AGREGAR HORARIO:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDown1.AutoSize = true;
-            this.numericUpDown1.Location = new System.Drawing.Point(54, 165);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(35, 23);
-            this.numericUpDown1.TabIndex = 39;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label8
             // 
@@ -271,36 +245,12 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(95, 167);
+            this.label8.Location = new System.Drawing.Point(123, 169);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(19, 19);
             this.label8.TabIndex = 40;
             this.label8.Text = "A";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numericUpDown2.AutoSize = true;
-            this.numericUpDown2.Location = new System.Drawing.Point(120, 165);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(35, 23);
-            this.numericUpDown2.TabIndex = 41;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label9
             // 
@@ -308,47 +258,18 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(20, 167);
+            this.label9.Location = new System.Drawing.Point(3, 169);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(28, 19);
             this.label9.TabIndex = 42;
             this.label9.Text = "DE";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // radioButton1
-            // 
-            this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton1.ForeColor = System.Drawing.Color.White;
-            this.radioButton1.Location = new System.Drawing.Point(164, 150);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(51, 23);
-            this.radioButton1.TabIndex = 43;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "AM";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.radioButton2.ForeColor = System.Drawing.Color.White;
-            this.radioButton2.Location = new System.Drawing.Point(164, 179);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(51, 23);
-            this.radioButton2.TabIndex = 44;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "PM";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Enabled = false;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(79)))), ((int)(((byte)(208)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Roboto Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -359,6 +280,7 @@
             this.button2.TabIndex = 45;
             this.button2.Text = "AGREGAR";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
@@ -407,22 +329,42 @@
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(64)))), ((int)(((byte)(87)))));
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.scheduleSecond);
+            this.panel3.Controls.Add(this.scheduleFirst);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.inputSchedules);
-            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.btnDeleteSchedule);
             this.panel3.Controls.Add(this.button2);
             this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Controls.Add(this.numericUpDown1);
-            this.panel3.Controls.Add(this.radioButton1);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.numericUpDown2);
-            this.panel3.Location = new System.Drawing.Point(705, 217);
+            this.panel3.Location = new System.Drawing.Point(688, 217);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(235, 245);
             this.panel3.TabIndex = 48;
+            // 
+            // scheduleSecond
+            // 
+            this.scheduleSecond.AllowDrop = true;
+            this.scheduleSecond.CustomFormat = "hh:mm tt";
+            this.scheduleSecond.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.scheduleSecond.Location = new System.Drawing.Point(148, 167);
+            this.scheduleSecond.Name = "scheduleSecond";
+            this.scheduleSecond.ShowUpDown = true;
+            this.scheduleSecond.Size = new System.Drawing.Size(82, 23);
+            this.scheduleSecond.TabIndex = 50;
+            // 
+            // scheduleFirst
+            // 
+            this.scheduleFirst.AllowDrop = true;
+            this.scheduleFirst.CustomFormat = "hh:mm tt";
+            this.scheduleFirst.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.scheduleFirst.Location = new System.Drawing.Point(37, 167);
+            this.scheduleFirst.Name = "scheduleFirst";
+            this.scheduleFirst.ShowUpDown = true;
+            this.scheduleFirst.Size = new System.Drawing.Size(80, 23);
+            this.scheduleFirst.TabIndex = 49;
             // 
             // label10
             // 
@@ -430,7 +372,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Roboto Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(13, 56);
+            this.label10.Location = new System.Drawing.Point(3, 56);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(88, 19);
             this.label10.TabIndex = 46;
@@ -449,8 +391,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Configuration";
             this.Text = "Configuration";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -476,19 +416,17 @@
         private Button btnAddDays;
         private Label label6;
         private ComboBox inputSchedules;
-        private Button button1;
+        private Button btnDeleteSchedule;
         private Label label7;
-        private NumericUpDown numericUpDown1;
         private Label label8;
-        private NumericUpDown numericUpDown2;
         private Label label9;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
         private Button button2;
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
         private Label label11;
         private Label label10;
+        private DateTimePicker scheduleFirst;
+        private DateTimePicker scheduleSecond;
     }
 }

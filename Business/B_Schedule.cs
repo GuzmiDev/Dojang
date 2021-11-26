@@ -49,6 +49,7 @@ namespace Business
                 {
                     ScheduleToDelete.Status = false;
                     db.Schedules.Update(ScheduleToDelete);
+                    db.SaveChanges();
                 }
             }
         }

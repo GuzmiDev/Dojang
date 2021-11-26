@@ -39,15 +39,15 @@ namespace Dojang
                 foreach (var student in students)
                 {
                     int n = dataGridStudents.Rows.Add();
-                    student.Belt = DojangForm.Belts[student.BeltID - 1];
-                    student.Schedule = DojangForm.Schedules[student.ScheduleID - 1];
-                    student.PaymentPlan = DojangForm.PaymentPlans[student.PaymentPlanID - 1];
+                    student.Belt = DojangForm.Belts.FirstOrDefault(belt => belt.BeltID == student.BeltID);
+                    student.Schedule = DojangForm.Schedules.FirstOrDefault(schedule => schedule.ScheduleID == student.ScheduleID);
+                    student.PaymentPlan = DojangForm.PaymentPlans.FirstOrDefault(plan => plan.PaymentPlanID == student.PaymentPlanID);
 
                     dataGridStudents.Rows[n].Cells[0].Value = student.StudentID;
                     dataGridStudents.Rows[n].Cells[1].Value = student.Name;
                     dataGridStudents.Rows[n].Cells[2].Value = student.LastName;
                     dataGridStudents.Rows[n].Cells[3].Value = student.Belt.BeltName;
-                    dataGridStudents.Rows[n].Cells[4].Value = student.Schedule.Schedule;
+                    dataGridStudents.Rows[n].Cells[4].Value = student.Schedule is null ? "Horario Sin Asignar" : student.Schedule.Schedule ;
                     dataGridStudents.Rows[n].Cells[5].Value = student.Age;
 
                     if(student.Gender == Gender.MALE)
@@ -102,42 +102,62 @@ namespace Dojang
         //Update Student
         private void UpdateStudent()
         {
-            student.Name = inputNameStudentList.Text.ToTitleCase();
-            student.LastName = inputLastNameStudentList.Text.ToTitleCase();
-            student.Phone = inputPhoneStudentList.Text;
-            student.Age = Int32.Parse(inputAge.Text);
-
-            if (radioFemale.Checked)
+            if (chechInputs())
             {
-                student.Gender = Gender.FEMALE;
+                AlertBox.Error("Complete el formulario porfavor");
             }
             else
             {
-                student.Gender=Gender.MALE;
+                student.Name = inputNameStudentList.Text.ToTitleCase();
+                student.LastName = inputLastNameStudentList.Text.ToTitleCase();
+                student.Phone = inputPhoneStudentList.Text;
+                student.Age = Int32.Parse(inputAge.Text);
+
+                if (radioFemale.Checked)
+                {
+                    student.Gender = Gender.FEMALE;
+                }
+                else
+                {
+                    student.Gender = Gender.MALE;
+                }
+
+
+                student.BeltID = inputBeltStudentList.SelectedIndex + 1;
+                student.Belt = DojangForm.Belts.ElementAt(student.BeltID - 1);
+
+                student.PaymentPlanID = inputPlanStudentList.SelectedIndex + 1;
+                student.PaymentPlan = DojangForm.PaymentPlans.ElementAt(student.PaymentPlanID - 1);
+
+                student.ScheduleID = inputScheduleStudentList.SelectedIndex + 1;
+                student.Schedule = DojangForm.Schedules.ElementAt(student.ScheduleID - 1);
+
+
+
+                try
+                {
+                    B_Students.Update(student);
+                    AlertBox.SimpleMessage("Estudiante acutalizado.");
+                }
+                catch (Exception)
+                {
+                    AlertBox.Error("Error al actualizar estudiante en la base de datos.");
+                }
             }
+            
+        }
 
-
-            student.BeltID = inputBeltStudentList.SelectedIndex + 1;
-            student.Belt = DojangForm.Belts.ElementAt(student.BeltID - 1);
-
-            student.ScheduleID = inputScheduleStudentList.SelectedIndex +1;
-            student.Schedule = DojangForm.Schedules.ElementAt(student.ScheduleID - 1);
-
-            student.PaymentPlanID = inputPlanStudentList.SelectedIndex + 1;
-            student.PaymentPlan = DojangForm.PaymentPlans.ElementAt(student.PaymentPlanID - 1);
-
-
-
-            try
+        private bool chechInputs()
+        {
+            if (inputNameStudentList.Text == "" || inputLastNameStudentList.Text == "" || inputPhoneStudentList.Text == "" || inputBeltStudentList.Text == "" || inputPlanStudentList.Text == "" || inputScheduleStudentList.Text == "" || inputAge.Text == "")
             {
-            B_Students.Update(student);
-                AlertBox.SimpleMessage("Estudiante acutalizado.");
-
+                return true;
             }
-            catch (Exception)
+            else
             {
-                AlertBox.Error("Error al actualizar estudiante en la base de datos.");
+                return false;
             }
+
         }
 
         //ShowSelectedData
@@ -171,7 +191,16 @@ namespace Dojang
                 }
 
                 inputBeltStudentList.SelectedIndex = student.BeltID - 1;
-                inputScheduleStudentList.SelectedIndex = student.ScheduleID -1;
+
+                if (student.Schedule == null)
+                {
+                    inputScheduleStudentList.SelectedIndex = -1;
+                }
+                else
+                {
+                inputScheduleStudentList.Text = student.Schedule.Schedule ;
+                }
+
                 inputPlanStudentList.SelectedIndex = student.PaymentPlanID - 1;
                 imgPerfil.Image = ImageManipulator.ConvertByteArrayToImage(student.ImagePerfil);
 

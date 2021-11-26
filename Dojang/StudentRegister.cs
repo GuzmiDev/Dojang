@@ -105,8 +105,9 @@ namespace Dojang
 
             student.ImagePerfil = ImageManipulator.ConvertImageToBytes(getOnlyPictureBoxPhoto());
             student.ImageBarCode = ImageManipulator.ConvertImageToBytes(getBarcodePanelImage());
+
             student.BeltID = InputBelt.SelectedIndex + 1;
-            student.ScheduleID = inputSchedule.SelectedIndex + 1;
+            student.ScheduleID = DojangForm.Schedules.FirstOrDefault(schedule => schedule.Schedule == inputSchedule.SelectedItem).ScheduleID;
             student.PaymentPlanID = inputPaymentPlan.SelectedIndex + 1;
 
 

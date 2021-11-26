@@ -33,8 +33,10 @@ namespace Dojang
         }
         private void loadSchedules(List<ScheduleEntity> scheduleEntities)
         {
+            inputSchedules.Items.Clear();
             foreach (var schedule in scheduleEntities)
             {
+
                 inputSchedules.Items.Add(schedule.Schedule);
             }
         }
@@ -95,6 +97,43 @@ namespace Dojang
             }
             AlertBox.SimpleMessage("Se añadieron correctamente!");
         }
+        private void deleteSchedule()
+        {
+            try
+            {
+                var Schedule = DojangForm.Schedules.FirstOrDefault(schedule => schedule.Schedule == inputSchedules.SelectedItem.ToString());
+                B_Schedule.Delete(Schedule.ScheduleID);
+                DojangForm.loadSchedules();
+                this.loadSchedules(DojangForm.Schedules);
+                AlertBox.SimpleMessage("Horario eliminado correctamente");
+            }
+            catch (Exception)
+            {
+
+                AlertBox.Error("Error al eliminar horario");
+            }
+        }
+        private void createSchedule()
+        {
+            var scheduleFirstTime = scheduleFirst.Value.ToString("hh:mm tt");
+            var scheduleSecondTime = scheduleSecond.Value.ToString("hh:mm tt");
+
+            var schedule = new ScheduleEntity();
+
+            schedule.Schedule = scheduleFirstTime + " - "+ scheduleSecondTime ;
+            try
+            {
+                B_Schedule.Save(schedule);
+                DojangForm.loadSchedules();
+                AlertBox.SimpleMessage("Horario agregado correctamente");
+                this.loadSchedules(DojangForm.Schedules);
+            }
+            catch (Exception)
+            {
+                AlertBox.Error("Error en la db al crear horario");
+            }
+
+        }
 
 
         private void inputBoxPlans_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,6 +168,21 @@ namespace Dojang
             {
                 e.Handled = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            deleteSchedule();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            createSchedule();
+        }
+
+        private void inputSchedules_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnDeleteSchedule.Enabled = true;
         }
     }
 }
