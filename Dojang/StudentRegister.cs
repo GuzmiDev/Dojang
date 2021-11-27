@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,6 +29,9 @@ namespace Dojang
         private List<PaymentPlanEntity> paymentPlans;
         private PaymentPlanEntity paymentPlan;
         private int lastNumberStudent;
+        private object firstWord;
+        private string secondWord;
+
         public StudentRegister()
         {
             InitializeComponent();
@@ -231,14 +235,18 @@ namespace Dojang
 
         private void inputLastName_TextChanged(object sender, EventArgs e)
         {
-            studentName =  inputName.Text + " " + inputLastName.Text;
+            this.firstWord = Regex.Replace(inputName.Text.Split()[0], @"[^0-9a-zA-Z\ ]+", "");
+            this.secondWord = Regex.Replace(inputLastName.Text.Split()[0], @"[^0-9a-zA-Z\ ]+", "");
+            studentName = firstWord + " " + secondWord;
             BarCodeGenerator.generateBarCode(panelBarCode, nameStudentBarCode, studentNumber, studentName);
 
         }
 
         private void inputName_TextChanged(object sender, EventArgs e)
         {
-            studentName = inputName.Text + " " + inputLastName.Text;
+            this.firstWord = Regex.Replace(inputName.Text.Split()[0], @"[^0-9a-zA-Z\ ]+", "");
+            this.secondWord = Regex.Replace(inputLastName.Text.Split()[0], @"[^0-9a-zA-Z\ ]+", "");
+            studentName = firstWord + " " + secondWord;
             BarCodeGenerator.generateBarCode(panelBarCode, nameStudentBarCode, studentNumber, studentName);
         }
         private Bitmap getBarcodePanelImage()
